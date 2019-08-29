@@ -7,7 +7,10 @@
 //
 
 #import "AppDelegate.h"
-
+#import "AppDelegate+ConfigAppDelegate.h"
+#import "HJBaseNavViewController.h"
+#import "HJLoginThirdGuideViewController.h"
+#import "HJMainTabBarViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,7 +19,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [self HJConfigNavigation];
+    [self HJSetUpKeyBoard];
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    //登录页面
+//    HJLoginThirdGuideViewController *loginVc = [[HJLoginThirdGuideViewController alloc] init];
+//
+//    HJBaseNavViewController *nav = [[HJBaseNavViewController alloc] initWithRootViewController:loginVc];
+    
+//    self.window.rootViewController = nav;
+    
+    
+    HJMainTabBarViewController *mainVc = [[HJMainTabBarViewController alloc] init];
+    
+    self.window.rootViewController = mainVc;
+
+    
+    [self.window makeKeyAndVisible];
+
     return YES;
 }
 
