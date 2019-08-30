@@ -52,6 +52,11 @@
 		4BFAFAD12317CCFF00688C68 /* LMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFACD2317CCFF00688C68 /* LMJVerticalScrollText.m */; };
 		4BFAFAD22317CCFF00688C68 /* UILabel+ForLMJVerticalScrollText.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFACF2317CCFF00688C68 /* UILabel+ForLMJVerticalScrollText.m */; };
 		4BFAFAD52317CF6000688C68 /* HJMoreClassTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFAD42317CF5F00688C68 /* HJMoreClassTableViewCell.m */; };
+		4BFAFAD82318A5E100688C68 /* PersonalHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFAD72318A5E100688C68 /* PersonalHeader.m */; };
+		4BFAFADB2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFADA2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m */; };
+		4BFAFADE2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFADD2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m */; };
+		4BFAFAE12318C5C900688C68 /* WelfareHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFAE02318C5C900688C68 /* WelfareHeader.m */; };
+		4BFAFAE42318C65100688C68 /* WelfareTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFAE32318C65100688C68 /* WelfareTableViewCell.m */; };
 		BB602B8AB366442DAE897A7F /* libPods-selfCateringCafe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8CDBFC3EAFF985B28B1E6 /* libPods-selfCateringCafe.a */; };
 /* End PBXBuildFile section */
 
@@ -152,6 +157,16 @@
 		4BFAFACF2317CCFF00688C68 /* UILabel+ForLMJVerticalScrollText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+ForLMJVerticalScrollText.m"; sourceTree = "<group>"; };
 		4BFAFAD32317CF5F00688C68 /* HJMoreClassTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJMoreClassTableViewCell.h; sourceTree = "<group>"; };
 		4BFAFAD42317CF5F00688C68 /* HJMoreClassTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJMoreClassTableViewCell.m; sourceTree = "<group>"; };
+		4BFAFAD62318A5E100688C68 /* PersonalHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalHeader.h; sourceTree = "<group>"; };
+		4BFAFAD72318A5E100688C68 /* PersonalHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalHeader.m; sourceTree = "<group>"; };
+		4BFAFAD92318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalCenterMoreBtnTableViewCell.h; sourceTree = "<group>"; };
+		4BFAFADA2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterMoreBtnTableViewCell.m; sourceTree = "<group>"; };
+		4BFAFADC2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJPersonalChnageBtnTableViewCell.h; sourceTree = "<group>"; };
+		4BFAFADD2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJPersonalChnageBtnTableViewCell.m; sourceTree = "<group>"; };
+		4BFAFADF2318C5C900688C68 /* WelfareHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelfareHeader.h; sourceTree = "<group>"; };
+		4BFAFAE02318C5C900688C68 /* WelfareHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelfareHeader.m; sourceTree = "<group>"; };
+		4BFAFAE22318C65100688C68 /* WelfareTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelfareTableViewCell.h; sourceTree = "<group>"; };
+		4BFAFAE32318C65100688C68 /* WelfareTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelfareTableViewCell.m; sourceTree = "<group>"; };
 		B9E8CDBFC3EAFF985B28B1E6 /* libPods-selfCateringCafe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-selfCateringCafe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5DDE34909471A1A57744A5 /* Pods-selfCateringCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selfCateringCafe.release.xcconfig"; path = "Target Support Files/Pods-selfCateringCafe/Pods-selfCateringCafe.release.xcconfig"; sourceTree = "<group>"; };
 		F3CA107E350A48DE3AFCFA40 /* Pods-selfCateringCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selfCateringCafe.debug.xcconfig"; path = "Target Support Files/Pods-selfCateringCafe/Pods-selfCateringCafe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -578,6 +593,12 @@
 		4BFAFAAE2317B6B400688C68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BFAFAD62318A5E100688C68 /* PersonalHeader.h */,
+				4BFAFAD72318A5E100688C68 /* PersonalHeader.m */,
+				4BFAFAD92318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.h */,
+				4BFAFADA2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m */,
+				4BFAFADC2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.h */,
+				4BFAFADD2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -585,6 +606,10 @@
 		4BFAFAB02317B6DA00688C68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BFAFADF2318C5C900688C68 /* WelfareHeader.h */,
+				4BFAFAE02318C5C900688C68 /* WelfareHeader.m */,
+				4BFAFAE22318C65100688C68 /* WelfareTableViewCell.h */,
+				4BFAFAE32318C65100688C68 /* WelfareTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -805,6 +830,7 @@
 			files = (
 				4BFAFA9D2317837A00688C68 /* HJLoginRegistAlert.m in Sources */,
 				4BFAFA8323176DC500688C68 /* HJBaseWebViewController.m in Sources */,
+				4BFAFAD82318A5E100688C68 /* PersonalHeader.m in Sources */,
 				4BFAFA6B23176DC500688C68 /* UIView+BlockGesture.m in Sources */,
 				4BFAFAD12317CCFF00688C68 /* LMJVerticalScrollText.m in Sources */,
 				4BFAFABF2317B9C200688C68 /* RecruitmentViewController.m in Sources */,
@@ -821,7 +847,9 @@
 				4BFAFA7923176DC500688C68 /* PPNumberButton.m in Sources */,
 				4BFAFA6E23176DC500688C68 /* UIImageView+initImageView.m in Sources */,
 				4BFAFA8423176DC500688C68 /* HJBaseViewController.m in Sources */,
+				4BFAFAE12318C5C900688C68 /* WelfareHeader.m in Sources */,
 				4BFAFA6623176DC500688C68 /* HJInputBoxLimitsWordCount.m in Sources */,
+				4BFAFAE42318C65100688C68 /* WelfareTableViewCell.m in Sources */,
 				4BFAFA7123176DC500688C68 /* HJCatche.m in Sources */,
 				4BFAFA8623176DC500688C68 /* HJNetWorkModel.m in Sources */,
 				4BFAFAD22317CCFF00688C68 /* UILabel+ForLMJVerticalScrollText.m in Sources */,
@@ -838,12 +866,14 @@
 				4BFAFAA92317B69000688C68 /* HomPageViewController.m in Sources */,
 				4BFAFA8123176DC500688C68 /* HJBaseTableview.m in Sources */,
 				4BFAFA6A23176DC500688C68 /* UILabel+InitMethod.m in Sources */,
+				4BFAFADE2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m in Sources */,
 				4BFAFA9723177D0900688C68 /* HJRigistViewController.m in Sources */,
 				4BFAF8D223175C3700688C68 /* AppDelegate.m in Sources */,
 				4BFAFAD02317CCFF00688C68 /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				4BFAFA6923176DC500688C68 /* UIButton+CountDown.m in Sources */,
 				4BFAFA7023176DC500688C68 /* AppDelegate+ConfigAppDelegate.m in Sources */,
 				4BFAFA7B23176DC500688C68 /* WRCustomNavigationBar.m in Sources */,
+				4BFAFADB2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m in Sources */,
 				4BFAFA9423177C9E00688C68 /* HJLoginPhoneViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
