@@ -30,6 +30,7 @@
     
     UIButton *orderBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [orderBtn setImage:kGetImage(@"PromotionOrders") forState:UIControlStateNormal];
+    [orderBtn addTarget:self action:@selector(orderClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:orderBtn];
     [orderBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.offset(92);
@@ -40,6 +41,7 @@
 
     UIButton *teamBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [teamBtn setImage:kGetImage(@"MyTeam") forState:UIControlStateNormal];
+    [teamBtn addTarget:self action:@selector(myTeamClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:teamBtn];
     [teamBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(orderBtn.mas_right).offset(sapce);
@@ -52,6 +54,7 @@
     
     UIButton *teamMoney = [UIButton buttonWithType:UIButtonTypeCustom];
     [teamMoney setImage:kGetImage(@"TeamBenefit") forState:UIControlStateNormal];
+    [teamMoney addTarget:self action:@selector(teamMoneyClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:teamMoney];
     [teamMoney mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(teamBtn.mas_right).offset(sapce);
@@ -61,6 +64,33 @@
     }];
     
     
+}
+
+#pragma mark-推广订单
+-(void)orderClick
+{
+    if (self.moreBtnBlock) {
+        
+        self.moreBtnBlock(1);
+    }
+
+}
+#pragma mark-我的团队
+-(void)myTeamClick
+{
+    if (self.moreBtnBlock) {
+        
+        self.moreBtnBlock(2);
+    }
+}
+
+#pragma mark-团队收益
+-(void)teamMoneyClick
+{
+    if (self.moreBtnBlock) {
+        
+        self.moreBtnBlock(3);
+    }
 }
 
 

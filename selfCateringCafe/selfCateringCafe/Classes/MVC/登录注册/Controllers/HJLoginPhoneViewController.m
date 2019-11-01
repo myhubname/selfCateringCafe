@@ -10,6 +10,7 @@
 #import "HJTexfLineImageTableViewCell.h"
 #import "HJLoginRegistAlert.h"
 #import "HJRigistViewController.h"
+#import "HJMainTabBarViewController.h"
 @interface HJLoginPhoneViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 列表 */
@@ -136,6 +137,11 @@
     
     cell.texf.placeholder = self.dataArray[indexPath.row][@"placehodel"];
 
+    if (indexPath.row == 1) {
+        
+        cell.texf.secureTextEntry = YES;
+    }
+    
     
     __weak typeof(self)weakself = self;
     cell.changeBlock = ^(UITextField * _Nonnull texf) {
@@ -154,8 +160,43 @@
 -(void)loginClick
 {
 
-    HJLog(@"%@%@",self.dataArray[0][@"text"],self.dataArray[1][@"text"]);
     
+    if ([self.dataArray[0][@"text"] length] == 0) {
+        
+        [HUDManager showStateHud:@"手机号不能为空" state:HUDStateTypeFail];
+        
+        return;
+    }else if ([self.dataArray[1][@"text"] length] == 0)
+    {
+        [HUDManager showStateHud:@"密码不能为空" state:HUDStateTypeFail];
+        
+        return;
+    }else
+    {
+        
+        [HUDManager showLoadingHud:@"登录中..."];
+        
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"user"] = self.dataArray[0][@"text"];
+        params[@"pass"] = [self.dataArray[1][@"text"] md5String];
+//        params[@"pass"] = self.dataArray[1][@"text"];
+        [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/Login/login" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+            if (result.isSucess) {
+                
+                [self.view endEditing:YES];
+                
+                userDefaultSave(result.data[@"userid"], userid);
+                
+                [HUDManager showStateHud:@"登录成功" state:HUDStateTypeSuccess];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+        } Faild:^(NSError * _Nonnull error) {
+            
+        }];
+
+    }
+
 }
 
 #pragma mark-注册

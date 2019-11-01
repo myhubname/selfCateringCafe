@@ -75,6 +75,14 @@ static NSString *const identifer = @"identifer";
     [self.collectionView reloadData];
     
 }
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.classBlock) {
+        
+        self.classBlock(self.dataArray[indexPath.row]);
+    }
+    
+}
 
 
 @end

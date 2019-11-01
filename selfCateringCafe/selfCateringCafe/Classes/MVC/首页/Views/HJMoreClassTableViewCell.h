@@ -10,10 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
 @interface HJMoreClassTableViewCell : UITableViewCell
 
 /** 数组 */
 @property (nonatomic,copy) NSArray *dataArray;
+
+/** collectionBlock */
+@property (nonatomic,copy) void(^classBlock)(NSDictionary *dic);
 
 
 @end

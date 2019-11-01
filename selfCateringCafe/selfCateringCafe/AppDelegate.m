@@ -22,25 +22,26 @@
     
     [self HJConfigNavigation];
     [self HJSetUpKeyBoard];
+
+//    注册第三方
+  [WXApi registerApp:@"wx8b7fcf79789ccfd7" universalLink:@"https://appstoreconnect.apple.com/"];
+    
+    
+    
     
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+
     
     //登录页面
-//    HJLoginThirdGuideViewController *loginVc = [[HJLoginThirdGuideViewController alloc] init];
-//
-//    HJBaseNavViewController *nav = [[HJBaseNavViewController alloc] initWithRootViewController:loginVc];
-    
-//    self.window.rootViewController = nav;
-    
-    
     HJMainTabBarViewController *mainVc = [[HJMainTabBarViewController alloc] init];
-    
+        
     self.window.rootViewController = mainVc;
 
     
     [self.window makeKeyAndVisible];
+    
 
     return YES;
 }
@@ -72,5 +73,45 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:self];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [WXApi handleOpenURL:url delegate:self];
+
+}
+
+-(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
+{
+    if ([url.host isEqualToString:@"oauth"]) {//微信登录
+        
+        return [WXApi handleOpenURL:url delegate:self];
+    }
+    return YES;
+}
+
+//微信回调代理
+-(void)onResp:(BaseResp *)resp
+{
+    // =============== 获得的微信登录授权回调 ============
+    if ([resp isMemberOfClass:[SendAuthResp class]])  {
+
+        SendAuthResp *aresp = (SendAuthResp *)resp;
+        if (aresp.errCode != 0 ) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [HUDManager showStateHud:@"微信授权失败" state:HUDStateTypeFail];
+            });
+            return;
+        }
+        //授权成功获取 OpenId
+        NSString *code = aresp.code;
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"weChatSucess" object:code];
+
+    }
+}
 
 @end

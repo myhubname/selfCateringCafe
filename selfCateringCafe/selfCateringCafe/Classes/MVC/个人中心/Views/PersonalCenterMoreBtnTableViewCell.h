@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface PersonalCenterMoreBtnTableViewCell : UITableViewCell
 
+/** 按钮点击事件 */
+@property (nonatomic,copy) void(^moreBtnBlock)(NSInteger tag);
+
+
 @end
 
 NS_ASSUME_NONNULL_END

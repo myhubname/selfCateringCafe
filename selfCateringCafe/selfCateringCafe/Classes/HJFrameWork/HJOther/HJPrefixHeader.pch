@@ -1,0 +1,66 @@
+//
+//  HJPrefixHeader.pch
+//  MyFrameWork
+//
+//  Created by HJ_StyleMac on 2018/12/28.
+//  Copyright © 2018 HJ_StyleMac. All rights reserved.
+//
+#ifdef __OBJC__//确保只被Objective-C语言文件引用
+#ifndef HJPrefixHeader_pch
+#define HJPrefixHeader_pch
+
+//头文件调用
+#import "HJAPPHeader.h"
+
+
+//DEBUG打印
+#ifdef DEBUG
+#define HJLog(...) NSLog(@"%s 第%d行\n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
+#else
+#define HJLog(...)
+#endif
+
+//获取屏幕宽度，高度,Frame
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENH_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define SCREEN_SIZE [UIScreen mainScreen].bounds.size
+#define SCREEN [UIScreen mainScreen].bounds
+//获取状态栏高度
+#define StatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
+//导航栏高度
+#define NavBarHeight 44.0
+//tabbar高度
+#define TabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+//顶部高度
+#define TopHeight (StatusBarHeight + NavBarHeight)
+
+//获取通知中心
+#define HJNotificationCenter [NSNotificationCenter defaultCenter]
+
+//本地轻量级数据存储
+#define HJUserDefaults  [NSUserDefaults standardUserDefaults]
+
+//设置随机颜色,颜色
+#define HJRandomColor [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0]
+//iOS8以上设置颜色
+#define HJRGBANewColor(r, g, b, a) [UIColor colorWithDisplayP3Red:(r)/255.0 green:(g)/255.0 blue:(b)/255.0  alpha:a]
+//iOS 设置颜色
+#define HJRGBAColor(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a];
+#define HJRGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+//弱引用/强引用
+#define HJWeakSelf(type)  __weak typeof(type) weak##type = type;
+#define HJStrongSelf(type)  __strong typeof(type) type = weak##type;
+
+
+//获取图片
+#define kGetImage(imageName) [UIImage imageNamed:[NSString stringWithFormat:@"%@",imageName]]
+
+//APP版本号
+#define kAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+
+
+
+
+#endif /* HJPrefixHeader_pch */
+#endif

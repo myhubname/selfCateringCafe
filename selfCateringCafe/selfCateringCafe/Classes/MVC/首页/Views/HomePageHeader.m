@@ -7,13 +7,11 @@
 //
 
 #import "HomePageHeader.h"
-#import <SDCycleScrollView.h>
 #import "LMJVerticalScrollText.h"
 @interface HomePageHeader()<SDCycleScrollViewDelegate,LMJVerticalScrollTextDelegate>
 
-/** 轮播图 */
-@property (nonatomic,strong) SDCycleScrollView *sdcyScrollView;
-
+/** 跑马灯 */
+@property (nonatomic,weak) LMJVerticalScrollText *scrollerText;
 
 
 @end
@@ -36,7 +34,7 @@
     [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.offset(0);
-        make.height.offset(155);
+        make.height.offset(200);
     }];
     
     [self addSubview:self.sdcyScrollView];
@@ -56,7 +54,6 @@
     verticalScrollText.backgroundColor = [UIColor whiteColor];
     verticalScrollText.textColor       = [UIColor blackColor];
     verticalScrollText.textFont        = [UIFont systemFontOfSize:12.f];
-    verticalScrollText.textDataArr     = @[@"这是一条数据：000000",@"这是一条数据：111111",@"这是一条数据：222222",@"这是一条数据：333333",@"这是一条数据：444444",@"这是一条数据：555555"];
     [verticalScrollText startScrollBottomToTopWithNoSpace];
     [self addSubview:verticalScrollText];
     [verticalScrollText mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -65,7 +62,7 @@
         make.right.offset(-20);
         make.centerY.equalTo(alertImageView.mas_centerY);
     }];
-    
+    self.scrollerText = verticalScrollText;
     
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = [UIColor colorWithHexString:@"#ededed"];
@@ -82,11 +79,36 @@
 {
     if (!_sdcyScrollView) {
         
-        _sdcyScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(20, 77.5, SCREEN_WIDTH-40, 143) delegate:self placeholderImage:kGetImage(@"sdcyScrollerBg")];
+        _sdcyScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(20, 95, SCREEN_WIDTH-40, 150) delegate:self placeholderImage:kGetImage(@"sdcyScrollerBg")];
         _sdcyScrollView.backgroundColor = [UIColor clearColor];
     }
     return _sdcyScrollView;
 }
 
+
+-(void)setDic:(NSDictionary *)dic
+{
+    _dic = dic;
+    
+    NSMutableArray *scrollorArray = [NSMutableArray array];
+    [dic[@"newslist"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        [scrollorArray addObject:obj[@"topic"]];
+    }];
+    
+    self.scrollerText.textDataArr = scrollorArray;
+    
+
+}
+
+- (void)verticalScrollText:(LMJVerticalScrollText *)scrollText clickIndex:(NSInteger)index content:(NSString *)content
+{
+    
+    if (self.scroTextClick) {
+        
+        self.scroTextClick(self.dic[@"newslist"][index][@"url"]);
+    }
+    
+}
 
 @end

@@ -8,7 +8,8 @@
 
 #import "HJLoginThirdGuideViewController.h"
 #import "HJLoginPhoneViewController.h"
-@interface HJLoginThirdGuideViewController ()
+#import "HJBangdingViewController.h"
+@interface HJLoginThirdGuideViewController ()<WXApiDelegate>
 
 @end
 
@@ -38,6 +39,7 @@
     UIButton *wechatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [wechatBtn setImage:kGetImage(@"weChatIcon") forState:UIControlStateNormal];
     wechatBtn.adjustsImageWhenHighlighted = NO;
+    [wechatBtn addTarget:self action:@selector(weChatClick) forControlEvents:UIControlEventTouchUpInside];
     [bgImageView addSubview:wechatBtn];
     [wechatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.offset(0);
@@ -59,8 +61,47 @@
         make.height.equalTo(wechatBtn);
     }];
     
+ 
+//    接收通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(weChatSucess:) name:@"weChatSucess" object:nil];
 
 }
+
+-(void)weChatSucess:(NSNotification *)noti
+{
+    
+    HJLog(@"%@",noti.object);
+    [HUDManager showLoadingHud:@"正在获取用户信息..."];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"code"] = noti.object;
+    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/Login/wxLogin" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+        if (result.isSucess) {
+            
+            if ([result.data[@"isbind"] integerValue] == 0) {
+                
+                [HUDManager hidenHud];
+                HJBangdingViewController *bangdingVc = [[HJBangdingViewController alloc] init];
+                bangdingVc.dic = result.data;
+                [self.navigationController pushViewController:bangdingVc animated:YES];
+                
+            }else
+            {
+                userDefaultSave(result.data[@"userid"], userid);
+               
+                [HUDManager showStateHud:@"登录成功" state:HUDStateTypeSuccess];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+
+            }
+            
+        }
+    } Faild:^(NSError * _Nonnull error) {
+        
+    }];
+        
+}
+
+
 
 -(void)phonClick
 {
@@ -69,7 +110,40 @@
     [self.navigationController pushViewController:loginVc animated:YES];
 }
 
+-(void)weChatClick
+{
+    
+    if ([WXApi isWXAppInstalled]&[WXApi isWXAppSupportApi]) {
+        
+        SendAuthReq *req = [[SendAuthReq alloc] init];
+        
+        req.scope = @"snsapi_userinfo";
+        
+        req.state = @"wx_oauth_authorization_state";
+        
+        [WXApi sendReq:req completion:^(BOOL success) {
+            
+            if (success == NO) {
+                
+                [HUDManager showStateHud:@"微信注册失败" state:HUDStateTypeFail];
+            }
+        }];
+        
+    }else
+    {
+        [HUDManager showTextHud:@"未安装微信应用或版本过低"];
+    }
+    
+    
+    
+}
 
+
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 
 @end

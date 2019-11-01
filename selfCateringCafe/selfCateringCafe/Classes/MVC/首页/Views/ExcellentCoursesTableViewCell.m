@@ -8,6 +8,19 @@
 
 #import "ExcellentCoursesTableViewCell.h"
 
+@interface ExcellentCoursesTableViewCell()
+
+/** 商品图片 */
+@property (nonatomic,weak) UIImageView *goodsImageView;
+
+/** 标题  */
+@property (nonatomic,weak) UILabel *nameLabel;
+
+/** 价格 */
+@property (nonatomic,weak) UILabel *priceLabel;
+
+@end
+
 @implementation ExcellentCoursesTableViewCell
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -23,7 +36,6 @@
 {
     
     UIImageView *goodsImageView = [[UIImageView alloc] init];
-    goodsImageView.image = kGetImage(@"hompagePlace");
     [self.contentView addSubview:goodsImageView];
     [goodsImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(15);
@@ -31,9 +43,9 @@
         make.height.offset(67);
         make.centerY.offset(0);
     }];
+    self.goodsImageView = goodsImageView;
     
     UILabel *nameLabel = [UILabel labelWithFontSize:16 textColor:[UIColor blackColor]];
-    nameLabel.text = @"技术革新终身制，（可自选学习， 台确保所提供的项目双赢)";
     nameLabel.numberOfLines = 2;
     [self.contentView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -41,15 +53,16 @@
         make.top.equalTo(goodsImageView.mas_top);
         make.right.offset(-15);
     }];
+    self.nameLabel = nameLabel;
     
     
     UILabel *priceLabel = [UILabel labelWithFontSize:15 textColor:[UIColor colorWithHexString:@"#fd3528"]];
-    priceLabel.text = @"￥398.00";
     [self.contentView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(nameLabel.mas_left);
         make.bottom.equalTo(goodsImageView.mas_bottom).offset(0);
     }];
+    self.priceLabel = priceLabel;
     
     
     UIView *bottomLine = [[UIView alloc] init];
@@ -63,6 +76,18 @@
     }];
     
     
+}
+
+-(void)setDic:(NSDictionary *)dic
+{
+    _dic = dic;
+    
+    [self.goodsImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,dic[@"pic"]]] placeholder:kGetImage(squarePlaceholder)];
+    
+    
+    self.nameLabel.text = dic[@"topic"];
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",dic[@"price"]];
 }
 
 

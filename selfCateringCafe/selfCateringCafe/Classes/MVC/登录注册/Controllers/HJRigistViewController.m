@@ -8,6 +8,8 @@
 
 #import "HJRigistViewController.h"
 #import "HJTexfLineImageTableViewCell.h"
+#import "UIButton+CountDown.h"
+#import "HJBaseWebViewController.h"
 @interface HJRigistViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 列表 */
@@ -22,7 +24,8 @@
 /** 验证码View */
 @property (nonatomic,strong) UIView *codeView;
 
-
+/** 同意 */
+@property (nonatomic,weak) UIButton *agreeBtn;
 
 @end
 
@@ -66,6 +69,7 @@
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor whiteColor];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200)];
         UIImageView *loginImageView = [[UIImageView alloc] initWithImage:kGetImage(@"logoIcon")];
         [headerView addSubview:loginImageView];
@@ -81,15 +85,33 @@
         HJLayoutBtn *AgreementBtn = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
         [AgreementBtn setImage:kGetImage(@"AgreeNomer") forState:UIControlStateNormal];
         [AgreementBtn setImage:kGetImage(@"AgreeSel") forState:UIControlStateSelected];
-        [AgreementBtn setTitle:@"《平台注册协议》" forState:UIControlStateNormal];
         AgreementBtn.titleLabel.font = [UIFont systemFontOfSize:12];
         [AgreementBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        [AgreementBtn addTarget:self action:@selector(agreeClick:) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:AgreementBtn];
         [AgreementBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(30);
             make.top.offset(15);
         }];
         AgreementBtn.selected = YES;
+        self.agreeBtn = AgreementBtn;
+        
+        UILabel *pinTaiLabel = [UILabel labelWithFontSize:12 textColor:[UIColor lightGrayColor]];
+        pinTaiLabel.text = @"《平台注册协议》";
+        pinTaiLabel.userInteractionEnabled = YES;
+        [footerView addSubview:pinTaiLabel];
+        [pinTaiLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(AgreementBtn.mas_right).offset(0);
+            make.centerY.equalTo(AgreementBtn.mas_centerY);
+        }];
+        __weak typeof(self)weakself = self;
+        [pinTaiLabel addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
+           
+            HJBaseWebViewController *webVc = [[HJBaseWebViewController alloc] init];
+            webVc.customNavBar.title =@"《平台注册协议》";
+            webVc.urlStr = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",kApiPrefix,@"Mobile/Index/service.html"]];
+            [weakself.navigationController pushViewController:webVc animated:YES];
+        }];
         
         
         UIButton *loginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -144,6 +166,9 @@
         
         cell.texf.rightView = self.codeView;
         cell.texf.rightViewMode = UITextFieldViewModeAlways;
+    }else if (indexPath.row == 1)
+    {
+        cell.texf.secureTextEntry = YES;
     }
     
     
@@ -166,13 +191,73 @@
 #pragma mark-注册
 -(void)registClick
 {
+    if (self.agreeBtn.selected == YES) {
+        
+        if ([self.dataArray[0][@"text"] length] == 0) {
+            
+            [HUDManager showStateHud:@"请输入手机号" state:HUDStateTypeFail];
+            return;
+        }else if ([self.dataArray[1][@"text"] length] == 0)
+        {
+            [HUDManager showStateHud:@"请输入密码" state:HUDStateTypeFail];
+            
+            return;
+        }else if ([self.dataArray[2][@"text"] length] == 0)
+        {
+            [HUDManager showStateHud:@"请输入验证码" state:HUDStateTypeFail];
+            return;
+        }else
+        {
+            [HUDManager showLoadingHud:@"正在注册..."];
+            
+            NSMutableDictionary *parmas = [NSMutableDictionary dictionary];
+            parmas[@"phone"] = self.dataArray[0][@"text"];
+            parmas[@"pass"] = [self.dataArray[1][@"text"] md5String];
+            parmas[@"code"] = self.dataArray[2][@"text"];
+            parmas[@"parent_id"] = self.dataArray[3][@"text"];
+            [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/Register/create" params:parmas sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+                if (result.isSucess) {
+                    
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                    userDefaultSave(result.data[@"userid"], userid);
+                    
+                    [HUDManager showStateHud:@"注册成功" state:HUDStateTypeSuccess];
+                    
+                }
+            } Faild:^(NSError * _Nonnull error) {
+                
+            }];
+        }
+        
+    }else
+    {
+        [HUDManager showStateHud:@"请同意平台协议" state:HUDStateTypeFail];
+    }
     
 }
 #pragma mark-获取验证码
 -(void)codeClick:(UIButton *)sender
 {
+    if ([self.dataArray[0][@"text"] length] == 0) {
+        
+        [HUDManager showStateHud:@"请输入手机号" state:HUDStateTypeFail];
+        
+        return;
+    }
+    [HUDManager showLoadingHud:@"获取验证码..."];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"phone"] = self.dataArray[0][@"text"];
+    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/Register/getRegVerifCode" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+        if (result.isSucess) {
+            [HUDManager hidenHud];
+            [sender startWithTime:59.0 title:@"获取验证码" countDownTitle:@"s" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+        }
+    } Faild:^(NSError * _Nonnull error) {
+        
+    }];
     
-    
+
 }
 
 -(UIButton *)codeBtn
@@ -208,4 +293,9 @@
     return _codeView;
 }
 
+-(void)agreeClick:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+}
 @end

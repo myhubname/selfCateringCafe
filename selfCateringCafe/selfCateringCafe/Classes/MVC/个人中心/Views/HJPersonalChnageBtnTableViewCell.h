@@ -17,6 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,copy) NSArray *dataArray;
 
 
+/** block */
+@property (nonatomic,copy) void(^didBlock)(NSString *name);
+
+
 
 @end
 

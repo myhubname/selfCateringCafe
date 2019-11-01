@@ -12,6 +12,8 @@ target 'selfCateringCafe' do
   pod 'IQKeyboardManager'
   pod 'YYKit'
   pod 'DZNEmptyDataSet'  
+  pod 'WMPageController' 
+  pod 'RFCircleCollectionViewFlowLayout'
  # Pods for selfCateringCafe
-
+ 
 end

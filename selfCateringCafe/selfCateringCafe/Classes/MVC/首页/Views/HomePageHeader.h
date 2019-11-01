@@ -7,10 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SDCycleScrollView.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HomePageHeader : UIView
+
+/** 轮播图 */
+@property (nonatomic,strong) SDCycleScrollView *sdcyScrollView;
+
+/** 字典 */
+@property (nonatomic,copy) NSDictionary *dic;
+
+/** block */
+@property (nonatomic,copy) void(^scroTextClick)(NSString *html);
+
 
 @end
 

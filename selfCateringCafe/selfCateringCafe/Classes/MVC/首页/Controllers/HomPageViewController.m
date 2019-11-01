@@ -10,6 +10,11 @@
 #import "HomePageHeader.h"
 #import "HJMoreClassTableViewCell.h"
 #import "ExcellentCoursesTableViewCell.h"
+#import "HJBaseWebViewController.h"
+#import "HJCourseViewController.h"
+#import "HJShopViewController.h"
+#import "HJSeverViewController.h"
+#import "HJCourseDetailViewController.h"
 @interface HomPageViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 列表 */
@@ -18,17 +23,42 @@
 /** 头部视图 */
 @property (nonatomic,strong) HomePageHeader *headerView;
 
+/** 字典 */
+@property (nonatomic,copy) NSDictionary *dataDic;
+
+/** 轮播图数组 */
+@property (nonatomic,strong) NSMutableArray *bannerArray;
+
+
 @end
 
 @implementation HomPageViewController
+
+-(NSMutableArray *)bannerArray
+{
+    if (!_bannerArray) {
+        
+        _bannerArray = [NSMutableArray array];
+    }
+    return _bannerArray;
+}
 
 #pragma mark-头部视图
 -(HomePageHeader *)headerView
 {
     if (!_headerView) {
         
-        _headerView = [[HomePageHeader alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 270)];
+        _headerView = [[HomePageHeader alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 300)];
         _headerView.backgroundColor = [UIColor whiteColor];
+        __weak typeof(self)weakself = self;
+        _headerView.scroTextClick = ^(NSString * _Nonnull html) {
+            
+            HJBaseWebViewController *webVC = [[HJBaseWebViewController alloc] init];
+            webVC.customNavBar.title = @"文章详情";
+            webVC.urlStr = [NSURL URLWithString:html];
+            [weakself.navigationController pushViewController:webVC animated:YES];
+            
+        };
     }
     return _headerView;
 }
@@ -49,7 +79,51 @@
 
     [self.view insertSubview:self.customNavBar aboveSubview:self.tableView];
 
+    
+    __weak typeof(self)weakself = self;
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [weakself getData];
+    }];
+    
+    [self getData];
+    
 }
+#pragma mark-获取数据
+-(void)getData
+{
+    [HUDManager showLoading];
+    [[HJNetWorkManager shareManager] AFGetDataUrl:@"Api/Index/getMallData" params:@{}.mutableCopy sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+        
+        if (result.isSucess) {
+            
+            [HUDManager hidenHud];
+            
+            self.dataDic = result.data;
+            
+            [self.bannerArray removeAllObjects];
+            [result.data[@"banner"] enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                [self.bannerArray addObject:[NSString stringWithFormat:@"%@%@",ApiImagefix,obj[@"pic"]]];
+            }];
+            
+            
+            
+        }
+        self.headerView.dic = self.dataDic;
+        
+        self.headerView.sdcyScrollView.imageURLStringsGroup = self.bannerArray;
+        
+        [self.tableView.mj_header endRefreshing];
+        
+        [self.tableView reloadData];
+        
+    } Faild:^(NSError * _Nonnull error) {
+        
+        [self.tableView.mj_header endRefreshing];
+    }];
+}
+
+
 #pragma mark-设置导航栏
 -(void)setNav
 {
@@ -104,7 +178,7 @@
         
         return 1;
     }else
-    return 3;
+    return [self.dataDic[@"prolist"] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,8 +195,33 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        cell.dataArray = @[@{@"image":@"curriculumIcon",@"name":@"课程"},@{@"image":@"shopIcon",@"name":@"商城"},@{@"image":@"SeverIcon",@"name":@"服务"},@{@"image":@"dynamic",@"name":@"动态"}];
+        cell.dataArray = @[@{@"image":@"ProjectResourceIcon",@"name":@"商学院"},@{@"image":@"shopIcon",@"name":@"线上商城"},@{@"image":@"LocalServiceIcon",@"name":@"本地服务"},@{@"image":@"ProjectResourcesIcon",@"name":@"项目资源"}];
         
+        __weak typeof(self)weakself = self;
+        cell.classBlock = ^(NSDictionary * _Nonnull dic) {
+          
+            if ([dic[@"name"] isEqualToString:@"本地服务"]) {
+                
+                HJSeverViewController *severVc = [[HJSeverViewController alloc] init];
+                
+                [weakself.navigationController pushViewController:severVc animated:YES];
+                
+            }else if ([dic[@"name"] isEqualToString:@"商学院"])
+            {
+                HJCourseViewController *courseVc = [[HJCourseViewController alloc] init];
+                
+                [weakself.navigationController pushViewController:courseVc animated:YES];
+            }else if ([dic[@"name"] isEqualToString:@"线上商城"])
+            {
+                HJShopViewController *shopVc = [[HJShopViewController alloc] init];
+                
+                [weakself.navigationController pushViewController:shopVc animated:YES];
+            }else
+            {
+                [HUDManager showTextHud:@"敬请期待~"];
+            }
+            
+        };
         return cell;
         
     }else
@@ -138,7 +237,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        
+        cell.dic = self.dataDic[@"prolist"][indexPath.row];
         
         return cell;
     }
@@ -209,6 +308,14 @@
     {
         return nil;
     }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    HJCourseDetailViewController *courseVc = [[HJCourseDetailViewController alloc] init];
+    courseVc.courseDetail_Id = self.dataDic[@"prolist"][indexPath.row][@"Id"];
+    [self.navigationController pushViewController:courseVc animated:YES];
+    
 }
 
 

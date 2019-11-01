@@ -19,11 +19,13 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.16)
+  - RFCircleCollectionViewFlowLayout (0.0.1)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
   - SDWebImage (5.0.2):
     - SDWebImage/Core (= 5.0.2)
   - SDWebImage/Core (5.0.2)
+  - WMPageController (2.5.2)
   - YYKit (1.0.9):
     - YYKit/no-arc (= 1.0.9)
   - YYKit/no-arc (1.0.9)
@@ -35,7 +37,9 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
   - MJRefresh
+  - RFCircleCollectionViewFlowLayout
   - SDCycleScrollView
+  - WMPageController
   - YYKit
 
 SPEC REPOS:
@@ -46,8 +50,10 @@ SPEC REPOS:
     - Masonry
     - MBProgressHUD
     - MJRefresh
+    - RFCircleCollectionViewFlowLayout
     - SDCycleScrollView
     - SDWebImage
+    - WMPageController
     - YYKit
 
 SPEC CHECKSUMS:
@@ -57,10 +63,12 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
+  RFCircleCollectionViewFlowLayout: c38f8051e3ac45c99c087d2e5abe92f9158d60d0
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
   SDWebImage: 6764b5fa0f73c203728052955dbefa2bf1f33282
+  WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: 7b48327ceaf9b681c9bb588ab17a6a308e685ed4
+PODFILE CHECKSUM: c25a88981bcf524ec56ceebe88bfe0e0e89a84ba
 
 COCOAPODS: 1.6.1

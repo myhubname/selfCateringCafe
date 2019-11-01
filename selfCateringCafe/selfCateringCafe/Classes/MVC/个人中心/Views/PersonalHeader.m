@@ -8,6 +8,19 @@
 
 #import "PersonalHeader.h"
 
+@interface PersonalHeader()
+
+/** 头像 */
+@property (nonatomic,weak) UIImageView *iconImageView;
+
+/** phoneLabel */
+@property (nonatomic,weak) UILabel *phoneLabel;
+
+/** 收益 */
+@property (nonatomic,weak) UILabel *moneyLabel;
+
+@end
+
 @implementation PersonalHeader
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -27,27 +40,29 @@
     [headerView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.offset(0);
         make.top.offset(0);
-        make.height.offset(240);
+        make.height.offset(280);
     }];
     
     
     UIImageView *iconImageView = [[UIImageView alloc] init];
-    iconImageView.image = kGetImage(@"UserPlaceIcon");
     [headerView addSubview:iconImageView];
     [iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(15);
         make.top.offset(TopHeight+15);
         make.width.height.offset(50);
     }];
+    self.iconImageView = iconImageView;
+    iconImageView.layer.cornerRadius = 25.0f;
+    iconImageView.layer.masksToBounds = YES;
     
     
     UILabel *phoneLabel = [UILabel labelWithFontSize:15 textColor:[UIColor whiteColor]];
-    phoneLabel.text = @"135****4580";
     [headerView addSubview:phoneLabel];
     [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerY.equalTo(iconImageView.mas_centerY);
         make.left.equalTo(iconImageView.mas_right).offset(15);
     }];
+    self.phoneLabel = phoneLabel;
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,6 +70,7 @@
     btn.titleLabel.font = [UIFont systemFontOfSize:13];
     [btn setTitleColor:[UIColor colorWithHexString:@"#ff5b56"] forState:UIControlStateNormal];
     [btn setBackgroundColor:[UIColor whiteColor]];
+    [btn addTarget:self action:@selector(shopClick) forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-15);
@@ -91,8 +107,6 @@
         make.bottom.offset(0);
         make.centerX.offset(0);
     }];
-    
-    
     
     
     UIView *line1 = [[UIView alloc] init];
@@ -163,6 +177,7 @@
         make.centerX.offset(0);
         make.top.offset(0);
     }];
+    self.moneyLabel = moneyLabel;
     
     UILabel *moneyAlertLabel = [UILabel labelWithFontSize:14 textColor:[UIColor whiteColor]];
     moneyAlertLabel.text = @"累计收益";
@@ -216,10 +231,43 @@
         make.right.offset(-15);
         make.centerY.offset(0);
     }];
+    __weak typeof(self)weakself = self;
+    [vipView addTapActionWithBlock:^(UIGestureRecognizer *gestureRecoginzer) {
+        
+        if (weakself.goToYuanClick) {
+            
+            weakself.goToYuanClick();
+        }
+    }];
     
-   
 }
 
+
+-(void)setDic:(NSDictionary *)dic
+{
+    _dic = dic;
+    
+
+    [self.iconImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,dic[@"userface"]]] placeholder:kGetImage(@"UserPlaceIcon")];
+    
+    
+    self.phoneLabel.text = dic[@"user"];
+    
+    self.moneyLabel.text = [NSString stringWithFormat:@"%@",dic[@"brokerageamount"]];
+    
+    
+}
+
+
+-(void)shopClick
+{
+    if (self.block) {
+        
+        self.block();
+    }
+    
+    
+}
 
 
 
