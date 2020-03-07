@@ -8,7 +8,7 @@
 
 #import "SeverViewController.h"
 
-@interface SeverViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface SeverViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 /** 列表 */
 @property (nonatomic,strong) HJBaseTableview *tableView;
@@ -163,12 +163,14 @@
         _wechatView.backgroundColor = [UIColor whiteColor];
         _wechatView.text = @"mxgg116";
         _wechatView.textAlignment = NSTextAlignmentCenter;
+        _wechatView.delegate = self;
         
         UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [copyBtn setBackgroundColor:[UIColor colorWithHexString:@"#2ebe80"]];
         copyBtn.size = CGSizeMake(100, 35);
         [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
         copyBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [copyBtn addTarget:self action:@selector(copyClick) forControlEvents:UIControlEventTouchUpInside];
         _wechatView.rightView = copyBtn;
         _wechatView.rightViewMode = UITextFieldViewModeAlways;
         
@@ -188,12 +190,14 @@
         _qqTexfiled.backgroundColor = [UIColor whiteColor];
         _qqTexfiled.text = @"2748188477";
         _qqTexfiled.textAlignment = NSTextAlignmentCenter;
+        _qqTexfiled.delegate = self;
 
         UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [copyBtn setBackgroundColor:[UIColor colorWithHexString:@"#41a4f9"]];
         copyBtn.size = CGSizeMake(100, 35);
         [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
         copyBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [copyBtn addTarget:self action:@selector(qqCopyClick) forControlEvents:UIControlEventTouchUpInside];
         _qqTexfiled.rightView = copyBtn;
         _qqTexfiled.rightViewMode = UITextFieldViewModeAlways;
         
@@ -213,18 +217,59 @@
         _lastTexf.backgroundColor = [UIColor whiteColor];
         _lastTexf.text = @"2748188477";
         _lastTexf.textAlignment = NSTextAlignmentCenter;
+        _lastTexf.delegate = self;
         
         UIButton *copyBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [copyBtn setBackgroundColor:[UIColor colorWithHexString:@"#fa5654"]];
         copyBtn.size = CGSizeMake(100, 35);
         [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
         copyBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        [copyBtn addTarget:self action:@selector(lastCopyClick) forControlEvents:UIControlEventTouchUpInside];
         _lastTexf.rightView = copyBtn;
         _lastTexf.rightViewMode = UITextFieldViewModeAlways;
 
 
     }
     return _lastTexf;
+}
+
+-(void)setDic:(NSDictionary *)dic
+{
+    _dic = dic;
+    
+    self.wechatView.text = dic[@"weixin"];
+    
+    self.qqTexfiled.text = dic[@"qq"];
+    
+    self.lastTexf.text = dic[@"weixin2"];
+}
+
+-(void)copyClick
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.dic[@"weixin"];
+
+    [HUDManager showTextHud:@"复制成功"];
+}
+
+-(void)qqCopyClick
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.dic[@"qq"];
+    [HUDManager showTextHud:@"复制成功"];
+}
+
+-(void)lastCopyClick
+{
+    UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+    pasteboard.string = self.dic[@"weixin2"];
+    [HUDManager showTextHud:@"复制成功"];
+    
+}
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    return NO;
 }
 
 

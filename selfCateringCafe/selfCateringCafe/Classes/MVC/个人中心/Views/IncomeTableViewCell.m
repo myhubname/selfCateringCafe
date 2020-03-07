@@ -25,13 +25,13 @@
     UILabel *withdrawIngLabel = [UILabel labelWithFontSize:15 textColor:[UIColor blackColor]];
     withdrawIngLabel.textAlignment = NSTextAlignmentCenter;
     withdrawIngLabel.numberOfLines = 0;
-    withdrawIngLabel.text = [NSString stringWithFormat:@"%@\n\n%@",@"正在提现中(元)",@"0.00"];
     [self.contentView addSubview:withdrawIngLabel];
     [withdrawIngLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(0);
         make.width.offset(SCREEN_WIDTH/2);
         make.top.bottom.offset(0);
     }];
+    self.withdrawIngLabel = withdrawIngLabel;
     
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
@@ -46,13 +46,14 @@
     UILabel *withdrawLabel = [UILabel labelWithFontSize:15 textColor:[UIColor blackColor]];
     withdrawLabel.textAlignment = NSTextAlignmentCenter;
     withdrawLabel.numberOfLines = 0;
-    withdrawLabel.text = [NSString stringWithFormat:@"%@\n\n%@",@"可提现余额(元)",@"0.00"];
     [self.contentView addSubview:withdrawLabel];
     [withdrawLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(line.mas_right).offset(0);
         make.width.equalTo(withdrawIngLabel.mas_width);
         make.top.bottom.offset(0);
     }];
+    
+    self.withdrawLabel = withdrawLabel;
     
 }
 

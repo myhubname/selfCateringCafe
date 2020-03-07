@@ -21,6 +21,7 @@
 -(void)creatUI
 {
     UIImageView *headerIcon = [[UIImageView alloc] init];
+    headerIcon.userInteractionEnabled = YES;
     headerIcon.image = kGetImage(@"headerIcon");
     [self addSubview:headerIcon];
     [headerIcon mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -28,20 +29,14 @@
     }];
     self.headerImageView = headerIcon;
     
-    UIView *alphView = [[UIView alloc] init];
-    alphView.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.6];
-    [headerIcon addSubview:alphView];
-    [alphView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.offset(0);
-    }];
-    
     UIButton *playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [playBtn setImage:kGetImage(@"CoursePlayIcon") forState:UIControlStateNormal];
-    [alphView addSubview:playBtn];
+    [self addSubview:playBtn];
     [playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.centerY.offset(0);
         make.width.height.offset(50);
     }];
+    self.playButton = playBtn;
     
 }
 

@@ -34,6 +34,7 @@
         make.left.offset(0);
         make.width.offset(SCREEN_WIDTH/4);
     }];
+    self.classBtn = classBtn;
     
     HJLayoutBtn *sellBtn = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
     [sellBtn setTitle:@"销量" forState:UIControlStateNormal];
@@ -47,6 +48,7 @@
         make.left.equalTo(classBtn.mas_right).offset(0);
         make.width.offset(SCREEN_WIDTH/4);
     }];
+    self.sellBtn = sellBtn;
     
  
     HJLayoutBtn *priceBtn = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
@@ -61,7 +63,7 @@
         make.left.equalTo(sellBtn.mas_right).offset(0);
         make.width.offset(SCREEN_WIDTH/4);
     }];
-    
+    self.priceBtn = priceBtn;
     
     HJLayoutBtn *timeSort = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
     [timeSort setTitle:@"时间" forState:UIControlStateNormal];
@@ -76,6 +78,7 @@
         make.width.offset(SCREEN_WIDTH/4);
     }];
 
+    self.timeBtn = timeSort;
     
     UIView *line = [[UIView alloc] init];
     line.backgroundColor = [UIColor colorWithHexString:@"#f2f2f2"];
@@ -87,6 +90,8 @@
     }];
     
 }
+
+
 
 
 @end

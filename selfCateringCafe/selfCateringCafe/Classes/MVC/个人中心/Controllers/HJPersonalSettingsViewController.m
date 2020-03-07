@@ -7,7 +7,9 @@
 //
 
 #import "HJPersonalSettingsViewController.h"
-
+#import "HJAddressViewController.h"
+#import "HJChangePasswordViewController.h"
+#import "HJUploadQRCodeViewController.h"
 @interface HJPersonalSettingsViewController ()<UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 
 /**列表*/
@@ -22,6 +24,8 @@
 /** 头像  */
 @property (nonatomic,strong) UIImageView *iconImageView;
 
+/** ispaypass */
+@property (nonatomic,copy) NSString *ispaypass;
 
 @end
 
@@ -32,7 +36,6 @@
     
     self.customNavBar.title = @"个人设置";
     
-    self.dataArray = @[@[@"用户",@"手机号码",@"绑定微信号"],@[@"绑定银行卡",@"支付密码管理"]];
     
     [self.view addSubview:self.tableView];
     
@@ -43,24 +46,79 @@
 -(void)getData
 {
     [HUDManager showLoading];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"userid"] = userDefaultGet(userid);
-    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/CenterInfo" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+
+    dispatch_group_t group = dispatch_group_create();
+    
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+
+        //创建信号量
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
         
-        if (result.isSucess) {
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"userid"] = userDefaultGet(userid);
+        [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/CenterInfo" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+
+            if (result.isSucess) {
+                
+                self.dic = result.data;
+                
+                [self.iconImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,result.data[@"userface"]]] placeholder:kGetImage(@"UserPlaceIcon")];
+                
+                if ([result.data[@"weixin"] length] == 0) {
+                    
+                    self.dataArray = @[@[@"用户",@"手机号码",@"绑定微信号"],@[@"收款码",@"收货地址",@"绑定银行卡",@"支付密码管理"]];
+                    
+                }else
+                {
+                    self.dataArray = @[@[@"用户",@"手机号码",@"微信号"],@[@"收款码",@"收货地址",@"绑定银行卡",@"支付密码管理"]];
+                }
+                
+            }
+            //          设置一个网络请求 ，无论成功或者失败发送信号量：
+            dispatch_semaphore_signal(semaphore);
+            
+        } Faild:^(NSError * _Nonnull error) {
+            
+            dispatch_semaphore_signal(semaphore);
+
+        }];
+        
+        // 在网络请求任务成功之前，信号量等待中
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    });
+    
+    
+    dispatch_group_async(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+       // 创建信号量
+        dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
+
+        [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/payPassState" params:@{@"userid":userDefaultGet(userid)}.mutableCopy sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+            if (result.isSucess) {
+                
+                self.ispaypass = result.data[@"ispaypass"];
+                
+            }
+            dispatch_semaphore_signal(semaphore);
+
+        } Faild:^(NSError * _Nonnull error) {
+           
+            dispatch_semaphore_signal(semaphore);
+
+        }];
+        
+        dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    });
+    dispatch_group_notify(group, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+            //回到主线程刷新
+            
+            [self.tableView reloadData];
             
             [HUDManager hidenHud];
             
-            self.dic = result.data;
-            
-            [self.iconImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,result.data[@"userface"]]] placeholder:kGetImage(@"UserPlaceIcon")];
-            
-            [self.tableView reloadData];
-        }
-        
-    } Faild:^(NSError * _Nonnull error) {
-        
-    }];
+        });
+    });
+    
 }
 
 #pragma mark-创建列表
@@ -73,26 +131,6 @@
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor colorWithHexString:@"#F6F6F6"];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
-        
-        UIButton *signOut = [UIButton buttonWithType:UIButtonTypeCustom];
-        [signOut setTitle:@"退出登录" forState:UIControlStateNormal];
-        signOut.titleLabel.font = [UIFont systemFontOfSize:15];
-        [signOut setBackgroundColor:[UIColor colorWithHexString:@"#fe5244"]];
-        [signOut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [signOut addTarget:self action:@selector(signClick) forControlEvents:UIControlEventTouchUpInside];
-        [footerView addSubview:signOut];
-        [signOut mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.offset(15);
-            make.right.offset(-15);
-            make.height.offset(45);
-            make.centerY.offset(0);
-        }];
-        signOut.layer.cornerRadius = 22.5f;
-        signOut.layer.masksToBounds = YES;
-        
-        _tableView.tableFooterView = footerView;
-        
     }
     return _tableView;
 }
@@ -146,6 +184,30 @@
     }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"手机号码"])
     {
         cell.detailTextLabel.text = self.dic[@"user"];
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"微信号"])
+    {
+        cell.detailTextLabel.text = self.dic[@"weixin"];
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"支付密码管理"])
+    {
+        if ([self.ispaypass integerValue] == 0) {
+            
+            cell.detailTextLabel.text = @"未设置";
+        }else
+        {
+            cell.detailTextLabel.text = @"已设置";
+        }
+        
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"收款码"])
+    {
+        if ([self.dic[@"paycode"] length] == 0) {
+            
+            cell.detailTextLabel.text = @"未设置";
+            
+        }else
+        {
+            cell.detailTextLabel.text = @"已设置";
+        }
+        
     }
     
     
@@ -188,6 +250,44 @@
             [self openPhotoLibrary];
         }];
         
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"收货地址"])
+    {
+        HJAddressViewController *addressVc = [[HJAddressViewController alloc] init];
+        [self.navigationController pushViewController:addressVc animated:YES];
+
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"支付密码管理"])
+    {
+        HJChangePasswordViewController *changePasswordVc = [[HJChangePasswordViewController alloc] init];
+        changePasswordVc.type = self.ispaypass;
+        [self.navigationController pushViewController:changePasswordVc animated:YES];
+    
+    }else if ([self.dataArray[indexPath.section][indexPath.row] isEqualToString:@"收款码"])
+    {
+        HJUploadQRCodeViewController *uploadVc = [[HJUploadQRCodeViewController alloc] init];
+        uploadVc.paycode = self.dic[@"paycode"];
+        __weak typeof(self)weakself = self;
+        uploadVc.uploadSucessBlock = ^(NSString * _Nonnull imageStr) {
+          
+            [HUDManager showLoading];
+            NSMutableDictionary *faceDic = [NSMutableDictionary dictionary];
+            faceDic[@"modField"] = @"paycode";
+            faceDic[@"modVal"] = imageStr;
+            faceDic[@"userid"] = userDefaultGet(userid);
+            [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/modUser" params:faceDic sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+                if (result.isSucess) {
+                    
+                    [HUDManager showStateHud:@"修改成功" state:HUDStateTypeSuccess];
+                    
+                    [weakself getData];
+                    
+                }
+            } Faild:^(NSError * _Nonnull error) {
+                
+            }];
+            
+        };
+        
+        [self.navigationController pushViewController:uploadVc animated:YES];
     }
     
 }
@@ -199,9 +299,7 @@
  */
 
 - (void)openCamera
-
 {
-    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     
     picker.delegate = self;
@@ -211,9 +309,7 @@
     //判断是否可以打开照相机
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-        
     {
-        
         //摄像头
         
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
@@ -233,11 +329,8 @@
 
 -(void)openPhotoLibrary
 {
-    
     // 进入相册
-    
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-        
     {
         
         UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
@@ -324,19 +417,7 @@
     return _iconImageView;
 }
 
--(void)signClick
-{
-    userDefaultRemove(userid);
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeTabbar" object:[NSString stringWithFormat:@"0"]];
-    [self performSelector:@selector(jumpVc) withObject:nil afterDelay:1.0f];
 
-    
-}
--(void)jumpVc
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
 
 
 @end

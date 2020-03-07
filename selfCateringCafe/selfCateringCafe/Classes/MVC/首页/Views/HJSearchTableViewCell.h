@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CourseModel.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HJSearchTableViewCell : UITableViewCell
+
+/** CourseModel */
+@property (nonatomic,strong) CourseModel *model;
 
 @end
 

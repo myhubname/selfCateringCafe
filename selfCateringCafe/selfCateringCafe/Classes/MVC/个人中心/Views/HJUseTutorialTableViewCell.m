@@ -50,17 +50,12 @@
     [self.contentView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(iconImageView.mas_right).offset(10);
+        make.right.offset(-10);
         make.top.equalTo(iconImageView.mas_top).offset(10);
     }];
     self.nameLabel = nameLabel;
 
-    UILabel *timeLabel = [UILabel labelWithFontSize:12 textColor:[UIColor lightGrayColor]];
-    [self.contentView addSubview:timeLabel];
-    [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.offset(-10);
-        make.centerY.equalTo(nameLabel.mas_centerY).offset(0);
-    }];
-    self.timeLabel = timeLabel;
+
 
     UILabel *desLabel = [UILabel labelWithFontSize:14 textColor:[UIColor lightGrayColor]];
     desLabel.numberOfLines = 2;

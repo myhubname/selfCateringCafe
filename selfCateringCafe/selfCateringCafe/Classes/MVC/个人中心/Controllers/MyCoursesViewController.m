@@ -39,13 +39,22 @@
 -(void)setUpChildVc
 {
     CourseChildViewController *allVc = [[CourseChildViewController alloc] init];
-    allVc.title = @"已购买";
+    allVc.title = @"全部";
+    allVc.type = 0;
     [self addChildViewController:allVc];
+
     
     CourseChildViewController *finishVc = [[CourseChildViewController alloc] init];
-    finishVc.title = @"待付款";
+    finishVc.title = @"待支付";
+    finishVc.type = 1;
     [self addChildViewController:finishVc];
+ 
     
+    CourseChildViewController *buyVc = [[CourseChildViewController alloc] init];
+    buyVc.title = @"已支付";
+    buyVc.type = 2;
+    [self addChildViewController:buyVc];
+
 }
 
 #pragma mark-创建顶部栏
@@ -90,6 +99,16 @@
     }
     
     [topView addSubview:line];
+    
+    UIView *spceLine = [[UIView alloc] init];
+    spceLine.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self.view addSubview:spceLine];
+    [spceLine mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(topView.mas_bottom);
+        make.left.right.offset(0);
+        make.height.offset(1);
+    }];
+    
 }
 #pragma mark-选中按钮
 -(void)titleclick:(UIButton *)sender
@@ -114,7 +133,7 @@
 {
     //不要自动调整inset
     UIScrollView *Myscoller=[[UIScrollView alloc]init];
-    Myscoller.frame = CGRectMake(0,self.topView.height+self.topView.top, SCREEN_WIDTH, SCREENH_HEIGHT-self.topView.height-self.topView.top);
+    Myscoller.frame = CGRectMake(0,self.topView.height+self.topView.top+1, SCREEN_WIDTH, SCREENH_HEIGHT-self.topView.height-self.topView.top-1);
     Myscoller.pagingEnabled=YES;
     Myscoller.delegate = self;
     Myscoller.backgroundColor = [UIColor whiteColor];

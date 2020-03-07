@@ -41,4 +41,8 @@
  */
 -(void)sheetAlertVcNoTitleAndMessage:(UIColor *)bottomColor bottomBlock:(void(^)(id))bottomBlock BottomTitle:(NSString *)bottomTitle TopTitle:(NSString *)TopTitle TopTitleColor:(UIColor *)topTitleColor topBlock:(void(^)(id))topBlock secondTitle:(NSString *)secondTitle secondColor:(UIColor *)secondColor secondBlock:(void(^)(id))secondBlock;
 
+
+-(void)showAlertTexfMessage:(NSString *)message placeHodel:(NSString *)placeHodel leftTitle:(NSString *)leftTitle leftClick:(void (^)(id))leftBlock rightTitle:(NSString *)rightTitle rightBlock:(void (^)(id))rightBlock;
+
+
 @end

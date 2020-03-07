@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HJUseTutorialViewController : HJBaseViewController
 
+/** type */
+@property (nonatomic,copy) NSString *type;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,6 +9,10 @@
 #import "HJCoffeeBeansViewController.h"
 #import "HJCoffeeBeanMissionTableViewCell.h"
 #import "HJShopViewController.h"
+#import "HJCourseViewController.h"
+#import "inviteFriendsViewController.h"
+#import "HJCoffeBeanDetailViewController.h"
+#import "HJExchangeRecordsViewController.h"
 @interface HJCoffeeBeansViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 背景图片 */
@@ -23,6 +27,15 @@
 /** 数组 */
 @property (nonatomic,copy) NSArray *dataArray;
 
+/** 价格 */
+@property (nonatomic,weak) UILabel *priceLabel;
+
+/** o头像 */
+@property (nonatomic,weak) UIImageView *iconImageView;
+
+/** 字典 */
+@property (nonatomic,copy) NSDictionary *dic;
+
 
 @end
 
@@ -36,11 +49,12 @@
     
     [self.customNavBar wr_setBottomLineHidden:YES];
     
-    [self.customNavBar setTitle:@"我的咖豆"];
+    [self.customNavBar setTitle:@"我的积分"];
 
     [self.customNavBar setTitleLabelColor:[UIColor whiteColor]];
     
-    self.dataArray = @[@{@"image":@"CheckinIcon",@"name":@"每日签到",@"detail":@"会员每日完成签到+5咖豆",@"type":@"1"},@{@"image":@"buyCourseIcon",@"name":@"购买课程",@"detail":@"自己购买课程可获得相应咖豆",@"type":@"2"},@{@"image":@"shareIcon",@"name":@"推广/分享",@"detail":@"成功推荐一位会员",@"type":@"3"}];
+    self.dataArray = @[@{@"image":@"CheckinIcon",@"name":@"每日签到",@"detail":@"会员每日完成签到+5积分",@"type":@"1"},@{@"image":@"buyCourseIcon",@"name":@"购买课程",@"detail":@"自己购买课程可获得相应积分",@"type":@"2"},@{@"image":@"shareIcon",@"name":@"推广/分享",@"detail":@"成功推荐一位会员",@"type":@"3"},@{@"image":@"point",@"name":@"兑换记录",@"detail":@"积分兑换记录",@"type":@"4"}
+                       ];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREENH_HEIGHT)];
     bgImageView.image = kGetImage(@"beeanBg");
@@ -53,7 +67,46 @@
     [self creatheader];
     
     [self creatConnentView];
+    
+    [self getData];
 }
+#pragma mark-获取数据
+-(void)getData
+{
+    [HUDManager showLoading];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"userid"] = userDefaultGet(userid);
+    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/CenterInfo" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+        
+        if (result.isSucess) {
+            
+            [HUDManager hidenHud];
+            
+            self.dic = result.data;
+            
+            NSString *priceStr = [NSString stringWithFormat:@"积分：%@分",result.data[@"integral"]];
+            self.priceLabel.text = priceStr;
+            
+            NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithString:priceStr];
+            
+            NSRange range = [priceStr rangeOfString:[NSString stringWithFormat:@"%@",result.data[@"integral"]]];
+            
+            [attributeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#ff001f"] range:range];
+            
+            [attributeStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:range];
+            
+            self.priceLabel.attributedText = attributeStr;
+            
+            [self.iconImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,result.data[@"userface"]]] placeholder:kGetImage(@"UserPlaceIcon")];
+
+            [self.tableView reloadData];
+            
+        }
+    } Faild:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
 
 -(void)creatheader
 {
@@ -65,13 +118,15 @@
     
     
     UIImageView *iconimageView = [[UIImageView alloc] init];
-    iconimageView.image = kGetImage(@"UserPlaceIcon");
     [headerimageView addSubview:iconimageView];
     [iconimageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.width.height.offset(50);
         make.centerY.offset(0);
         make.left.offset(15);
     }];
+    self.iconImageView = iconimageView;
+    iconimageView.layer.cornerRadius = 25.0f;
+    iconimageView.layer.masksToBounds = YES;
     
     
     UILabel *priceLabel = [UILabel labelWithFontSize:12 textColor:[UIColor blackColor]];
@@ -80,24 +135,18 @@
         make.centerY.equalTo(iconimageView.mas_centerY);
         make.left.equalTo(iconimageView.mas_right).offset(10);
     }];
-    NSString *priceStr = @"咖豆：245分";
-    priceLabel.text = priceStr;
+  
     
-    NSMutableAttributedString *attributeStr = [[NSMutableAttributedString alloc] initWithString:priceStr];
-
-    NSRange range = [priceStr rangeOfString:@"245"];
+    self.priceLabel = priceLabel;
     
-    [attributeStr addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#ff001f"] range:range];
     
-    [attributeStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:18] range:range];
-    
-    priceLabel.attributedText = attributeStr;
     
     HJLayoutBtn *detailBtn = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
     [detailBtn setImage:kGetImage(@"rightArrowIcon") forState:UIControlStateNormal];
     [detailBtn setTitle:@"明细" forState:UIControlStateNormal];
     detailBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     detailBtn.HJ_Style = HJLaoutBtnStyleImageRight;
+    [detailBtn addTarget:self action:@selector(detailClick) forControlEvents:UIControlEventTouchUpInside];
     [detailBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [headerimageView addSubview:detailBtn];
     [detailBtn mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -105,6 +154,14 @@
         make.centerY.offset(0);
     }];
     
+}
+
+-(void)detailClick
+{
+    HJCoffeBeanDetailViewController *coffeVc = [[HJCoffeBeanDetailViewController alloc] init];
+    
+    
+    [self.navigationController pushViewController:coffeVc animated:YES];
     
 }
 
@@ -129,7 +186,7 @@
     
     
     UIButton *MacaBeanMissionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [MacaBeanMissionBtn setTitle:@"咖豆任务" forState:UIControlStateNormal];
+    [MacaBeanMissionBtn setTitle:@"积分任务" forState:UIControlStateNormal];
     [MacaBeanMissionBtn setTitleColor:[UIColor colorWithHexString:@"#E76D70"] forState:UIControlStateNormal];
     MacaBeanMissionBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [topView addSubview:MacaBeanMissionBtn];
@@ -140,7 +197,7 @@
     }];
     
     UIButton *shopBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [shopBtn setTitle:@"咖豆商城" forState:UIControlStateNormal];
+    [shopBtn setTitle:@"积分商城" forState:UIControlStateNormal];
     [shopBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     shopBtn.titleLabel.font = [UIFont systemFontOfSize:15];
     [shopBtn addTarget:self action:@selector(shopClick) forControlEvents:UIControlEventTouchUpInside];
@@ -210,6 +267,44 @@
         cell = [[HJCoffeeBeanMissionTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
     }
     cell.dic = self.dataArray[indexPath.row];
+    cell.dataSource = self.dic;
+    
+    __weak typeof(self)weakself = self;
+    cell.block = ^(NSDictionary * _Nonnull dic) {
+        
+        if ([dic[@"type"] integerValue] == 1) {
+            
+            [HUDManager showLoading];
+            [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/sign" params:@{@"userid":userDefaultGet(userid)}.mutableCopy sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+                if (result.isSucess) {
+                    [weakself getData];
+                }
+            } Faild:^(NSError * _Nonnull error) {
+                
+            }];
+        }else if ([dic[@"type"] integerValue] == 2)
+        {
+            HJCourseViewController *courseVc = [[HJCourseViewController alloc] init];
+            
+            [weakself.navigationController pushViewController:courseVc animated:YES];
+
+        }else if ([dic[@"type"] integerValue] == 3)
+        {
+            inviteFriendsViewController *vc = [[inviteFriendsViewController alloc] init];
+            
+            [weakself.navigationController pushViewController:vc animated:YES];
+
+        }
+        else
+        {
+            HJExchangeRecordsViewController *exRecordVc = [[HJExchangeRecordsViewController alloc] init];
+
+            [weakself.navigationController pushViewController:exRecordVc animated:YES];
+        }
+        
+        
+    };
+    
     return cell;
 }
 

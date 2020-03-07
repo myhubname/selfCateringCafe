@@ -14,8 +14,10 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - BRPickerView (2.2.1)
   - DZNEmptyDataSet (1.8.1)
   - IQKeyboardManager (6.3.0)
+  - JPVideoPlayer (3.1.1)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - MJRefresh (3.1.16)
@@ -32,8 +34,10 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - BRPickerView
   - DZNEmptyDataSet
   - IQKeyboardManager
+  - JPVideoPlayer
   - Masonry
   - MBProgressHUD
   - MJRefresh
@@ -45,8 +49,10 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - BRPickerView
     - DZNEmptyDataSet
     - IQKeyboardManager
+    - JPVideoPlayer
     - Masonry
     - MBProgressHUD
     - MJRefresh
@@ -58,8 +64,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  BRPickerView: 0590a8c5de9bd98c6b4e4f117a3dff6de287d5b2
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   IQKeyboardManager: 2ca9d64893247556f53523dcd8d78641f0ba7c23
+  JPVideoPlayer: 234c2fc5c9dfd67b969a5dd8233815eb872472c6
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MJRefresh: 7798e16e53a5ef7f332dd05b27664db4e29530fd
@@ -69,6 +77,6 @@ SPEC CHECKSUMS:
   WMPageController: 0c7624d2b48e4f1ab92371688cf6744ed701575d
   YYKit: 7cda43304a8dc3696c449041e2cb3107b4e236e7
 
-PODFILE CHECKSUM: c25a88981bcf524ec56ceebe88bfe0e0e89a84ba
+PODFILE CHECKSUM: 40e9bf98fc5bd897b7c8f1b94e1f030f83410a13
 
 COCOAPODS: 1.6.1

@@ -7,7 +7,9 @@
 //
 
 #import "HJUpgradeViewController.h"
-
+#import "WXApi.h"
+#import "HJChangePasswordViewController.h"
+#import "CYPasswordView.h"
 @interface HJUpgradeViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /**  列表 */
@@ -19,9 +21,8 @@
 /** 选中 */
 @property (nonatomic,assign) NSInteger selectedIndex;
 
-
-
-
+/** 密码框 */
+@property (nonatomic,weak) CYPasswordView *passwordView;
 @end
 
 @implementation HJUpgradeViewController
@@ -65,6 +66,7 @@
         footerBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [footerBtn setTintColor:[UIColor whiteColor]];
         [footerBtn setBackgroundColor:[UIColor colorWithHexString:@"#ed0424"]];
+        [footerBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:footerBtn];
         [footerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerY.offset(0);
@@ -140,7 +142,150 @@
     [self.tableView reloadData];
     
 }
+-(void)submitClick
+{
+        [HUDManager showLoading];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"cid"] = self.courseId;
+        params[@"userid"] = userDefaultGet(userid);
+        if ([self.dataArray[self.selectedIndex][@"name"] isEqualToString:@"微信支付"]) {
+            params[@"payment"] = @"1";
+        }else if ([self.dataArray[self.selectedIndex][@"name"] isEqualToString:@"余额支付"])
+        {
+            params[@"payment"] = @"3";
+        }
+        [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/toOrder" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+            if (result.isSucess) {
+                
+                if ([self.dataArray[self.selectedIndex][@"name"] isEqualToString:@"微信支付"]) {
+                    
+                    NSMutableDictionary *payParams = [NSMutableDictionary dictionary];
+                    payParams[@"userid"] = userDefaultGet(userid);
+                    payParams[@"sn"] = result.data[@"sn"];
+                    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/WxPay/wxPay" params:payParams sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+                        if (result.isSucess) {
+                            
+                            [HUDManager hidenHud];
+                            
+                            PayReq *req = [[PayReq alloc] init];
+                            req.openID = result.data[@"appid"];
+                            req.partnerId = result.data[@"partnerid"];
+                            req.prepayId = result.data[@"prepayid"];
+                            req.nonceStr = result.data[@"noncestr"];
+                            req.timeStamp = [[result.data objectForKey:@"timestamp"] intValue];
+                            req.package = result.data[@"package"];
+                            req.sign = result.data[@"sign"];
+                            [WXApi sendReq:req completion:^(BOOL success) {
+                                
+                                if (success == NO) {
+                                    
+                                    [HUDManager showStateHud:@"支付失败" state:HUDStateTypeFail];
+                                }
+                                
+                            }];
+                            
+                            
+                            
+                        }
+                        
+                    } Faild:^(NSError * _Nonnull error) {
+                        
+                    }];
+                    
+                }else if ([self.dataArray[self.selectedIndex][@"name"] isEqualToString:@"余额支付"])
+                {
+                    
+                    [HUDManager hidenHud];
+                    
+                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                    params[@"userid"] = userDefaultGet(userid);
+                    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/payPassState" params:params sucessBlock:^(HJNetWorkModel * _Nonnull resultdata) {
+                        if (resultdata.isSucess) {
+                            
+                            [HUDManager hidenHud];
+                            if ([resultdata.data[@"ispaypass"] integerValue] == 0) {
+                                
+                                [self alertVcTitle:@"系统提示" message:@"您未设置支付密码?" leftTitle:@"取消" leftTitleColor:[UIColor blackColor] leftClick:^(id leftClick) {
+                                } rightTitle:@"去设置" righttextColor:[UIColor redColor] andRightClick:^(id rightClick) {
+                                    HJChangePasswordViewController *changeVc = [[HJChangePasswordViewController alloc] init];
+                                    changeVc.type = result.data[@"ispaypass"];
+                                    [self.navigationController pushViewController:changeVc animated:YES];
+                                    
+                                }];
+                            }else
+                            {
+                                __weak typeof(self)weakself = self;
+                                CYPasswordView *passwordView = [[CYPasswordView alloc] init];
+                                passwordView.title = @"输入交易密码";
+                                passwordView.loadingText = @"提交中...";
+                                [passwordView showInView:self.view.window];
+                                self.passwordView = passwordView;
+                                passwordView.finish = ^(NSString *password) {
+                                    [weakself.passwordView hideKeyboard];
+                                    [weakself.passwordView startLoading];
+                                    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                                    params[@"userid"] = userDefaultGet(userid);
+                                    params[@"paypass"] = [password md5String];
+                                    params[@"sn"] = result.data[@"sn"];
+                                    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/localPayment" params:params sucessBlock:^(HJNetWorkModel * _Nonnull resultModel) {
+                                        
+                                        if (resultModel.isSucess) {
+                                            
+                                            [weakself.passwordView requestComplete:YES message:@"申购成功，做一些处理"];
+                                            [weakself.passwordView stopLoading];
+                                            [weakself.passwordView hide];
+                                            
+                                            [weakself.navigationController popViewControllerAnimated:YES];
+                                            
+                                            
+                                        }else
+                                        {
+                                            [weakself.passwordView requestComplete:NO message:@"申购失败，做一些处理"];
+                                            [weakself.passwordView stopLoading];
+                                            [weakself.passwordView hide];
+                                            
+                                        }
+                                        
+                                    } Faild:^(NSError * _Nonnull error) {
+                                        
+                                        [weakself.passwordView requestComplete:NO message:@"申购失败，做一些处理"];
+                                        [weakself.passwordView stopLoading];
+                                        [weakself.passwordView hide];
+                                    }];
+                                };
+                                
+                            }
+                            
+                        }
+                        
+                    } Faild:^(NSError * _Nonnull error) {
+                        
+                    }];
+                    
+                    
+                    
+                }
+                
+                
+            }
+        } Faild:^(NSError * _Nonnull error) {
+            
+        }];
+}
 
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //TODO: 页面appear 禁用
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    //TODO: 页面Disappear 启用
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:YES];
+}
 
 @end

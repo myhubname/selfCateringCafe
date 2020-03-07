@@ -36,7 +36,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.customNavBar.title = @"使用教程";
     
     [self.view addSubview:self.tableView];
     
@@ -72,7 +71,7 @@
     }
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     params[@"index"] = @(self.currentPage);
-    params[@"type"] = @"3";
+    params[@"type"] = self.type;
     [[HJNetWorkManager shareManager] AFGetDataUrl:@"Api/News/getNewsList" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
         if (result.isSucess) {
             

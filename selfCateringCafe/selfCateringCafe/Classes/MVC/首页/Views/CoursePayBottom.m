@@ -28,7 +28,7 @@
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.offset(0);
         make.top.bottom.offset(0);
-        make.width.offset(SCREEN_WIDTH/2+30);
+        make.width.offset(SCREEN_WIDTH-SCREEN_WIDTH/2+30);
     }];
     self.priceLabel = priceLabel;
     
@@ -43,8 +43,9 @@
     [buyBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.offset(0);
         make.right.offset(0);
-        make.left.equalTo(priceLabel.mas_right);
+        make.width.offset(SCREEN_WIDTH/2-30);
     }];
+    self.buyButton = buyBtn;
     
     
 }

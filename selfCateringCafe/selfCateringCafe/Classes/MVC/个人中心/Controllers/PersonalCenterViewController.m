@@ -14,7 +14,6 @@
 #import "HJBaseWebViewController.h"
 #import "inviteFriendsViewController.h"
 #import "HJMineMessageViewController.h"
-#import "PromotionOrderViewController.h"
 #import "HJMyTeamViewController.h"
 #import "HJPersonalSettingsViewController.h"
 #import "HJMyIncomeViewController.h"
@@ -22,6 +21,7 @@
 #import "HJCoffeeBeansViewController.h"
 #import "HJUseTutorialViewController.h"
 #import "HJDeanViewController.h"
+#import "ProOrderChildViewController.h"
 @interface PersonalCenterViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 列表 */
@@ -135,6 +135,26 @@
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableHeaderView = self.headerView;
+        
+        UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 100)];
+        
+        UIButton *signOut = [UIButton buttonWithType:UIButtonTypeCustom];
+        [signOut setTitle:@"退出登录" forState:UIControlStateNormal];
+        signOut.titleLabel.font = [UIFont systemFontOfSize:15];
+        [signOut setBackgroundColor:[UIColor colorWithHexString:@"#fe5244"]];
+        [signOut setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [signOut addTarget:self action:@selector(signClick) forControlEvents:UIControlEventTouchUpInside];
+        [footerView addSubview:signOut];
+        [signOut mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.offset(15);
+            make.right.offset(-15);
+            make.height.offset(45);
+            make.centerY.offset(0);
+        }];
+        signOut.layer.cornerRadius = 22.5f;
+        signOut.layer.masksToBounds = YES;
+        
+        _tableView.tableFooterView = footerView;
     }
     return _tableView;
 }
@@ -164,9 +184,10 @@
           
             if (tag == 1) {
                 
-                PromotionOrderViewController *OrderVc = [[PromotionOrderViewController alloc] init];
+                ProOrderChildViewController *OrderVc = [[ProOrderChildViewController alloc] init];
                 
                 [weakself.navigationController pushViewController:OrderVc animated:YES];
+                
             }else if (tag == 2)
             {
                 HJMyTeamViewController *myteamVc = [[HJMyTeamViewController alloc] init];
@@ -175,7 +196,7 @@
             }else if (tag ==  3)
             {
                 HJMyIncomeViewController *myinVc = [[HJMyIncomeViewController alloc] init];
-                
+                myinVc.paycode = self.dic[@"paycode"];
                 [weakself.navigationController pushViewController:myinVc animated:YES];
             }
             
@@ -220,27 +241,16 @@
             else if ([name isEqualToString:@"客服帮助"])
             {
                 SeverViewController *severVc = [[SeverViewController alloc] init];
+                severVc.dic = self.dic;
                 [weakself.navigationController pushViewController:severVc animated:YES];
                 
             }else if ([name isEqualToString:@"新手指引"])
             {
-                [HUDManager showLoading];
-             
-                [[HJNetWorkManager shareManager] AFGetDataUrl:@"Api/News/getNewsList" params:@{@"index":@0,@"type":@3}.mutableCopy sucessBlock:^(HJNetWorkModel * _Nonnull result) {
-                    if (result.isSucess) {
-                        
-                        [HUDManager hidenHud];
-                        
-                        HJBaseWebViewController *webVC = [[HJBaseWebViewController alloc] init];
-                        webVC.customNavBar.title = @"新手指引";
-                        webVC.urlStr = [NSURL URLWithString:result.data[0][@"url"]];
-                        [self.navigationController pushViewController:webVC animated:YES];
-                        
-                    }
-                } Faild:^(NSError * _Nonnull error) {
-                    
-                }];
-                                
+                HJUseTutorialViewController *useVc = [[HJUseTutorialViewController alloc] init];
+                useVc.type = @"3";
+                useVc.customNavBar.title = name;
+                [self.navigationController pushViewController:useVc animated:YES];
+                
             }else if ([name isEqualToString:@"我的消息"])
             {
                 HJMineMessageViewController *MessageVc = [[HJMineMessageViewController alloc] init];
@@ -250,16 +260,23 @@
             }else if ([name isEqualToString:@"我的课程"])
             {
                 MyCoursesViewController *courseVc = [[MyCoursesViewController alloc] init];
-
                 
                 [self.navigationController pushViewController:courseVc animated:YES];
                 
             }else if ([name isEqualToString:@"使用教程"])
             {
                 HJUseTutorialViewController *useVc = [[HJUseTutorialViewController alloc] init];
-                
+                useVc.type = @"9";
+                useVc.customNavBar.title = name;
                 [self.navigationController pushViewController:useVc animated:YES];
                 
+            }else if ([name isEqualToString:@"平台动态"])
+            {
+                HJUseTutorialViewController *useVc = [[HJUseTutorialViewController alloc] init];
+                useVc.type = @"4";
+                useVc.customNavBar.title = name;
+                [self.navigationController pushViewController:useVc animated:YES];
+
             }
             
         };
@@ -307,6 +324,16 @@
     {
         [self.customNavBar wr_setBackgroundAlpha:0];
     }
+    
+}
+
+
+-(void)signClick
+{
+    userDefaultRemove(userid);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeTabbar" object:[NSString stringWithFormat:@"0"]];
+    
     
 }
 

@@ -25,13 +25,27 @@
         
         UILabel *label = [UILabel labelWithFontSize:15 textColor:[UIColor lightGrayColor]];
         label.textAlignment = NSTextAlignmentCenter;
-        label.text = @"1";
         [self.contentView addSubview:label];
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.offset(i * SCREEN_WIDTH/4);
             make.top.bottom.offset(0);
             make.width.offset(SCREEN_WIDTH/4);
         }];
+        
+        if (i == 0) {
+            
+            self.oneLabel = label;
+        }else if (i == 1)
+        {
+            self.twoLabel = label;
+        }else if (i == 2)
+        {
+            self.threeLabel = label;
+        }else
+        {
+            self.fourLabel = label;
+        }
+        
     }
     
     

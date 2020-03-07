@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IncomeTableViewCell : UITableViewCell
 
+/** withdrawIngLabel */
+@property (nonatomic,weak) UILabel *withdrawIngLabel;
+
+/** withdrawLabel */
+@property (nonatomic,weak) UILabel *withdrawLabel;
+
 @end
 
 NS_ASSUME_NONNULL_END

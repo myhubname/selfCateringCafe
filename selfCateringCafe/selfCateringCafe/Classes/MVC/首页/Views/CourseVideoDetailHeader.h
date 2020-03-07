@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 /** 图片 */
 @property (nonatomic,weak) UIImageView *headerImageView;
 
+
+/** 按钮 */
+@property (nonatomic,weak) UIButton *playButton;
+
 @end
 
 NS_ASSUME_NONNULL_END

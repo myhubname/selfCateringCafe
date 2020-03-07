@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SeverViewController : HJBaseViewController
 
+/** 字典 */
+@property (nonatomic,copy) NSDictionary *dic;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -20,5 +20,8 @@ NSString *const kApiPrefix = @"http://yhapp.ncid.cn/";
 //图片资源地址
 NSString *const ApiImagefix = @"http://yhapp.ncid.cn/uploads/images/";
 
+//视频地址
+NSString *const ApiVideoFix = @"http://yhapp.ncid.cn/uploads/files/";
+
 
 NSString *const userid = @"userid";

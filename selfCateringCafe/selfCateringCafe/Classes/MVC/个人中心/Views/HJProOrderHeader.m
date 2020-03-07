@@ -85,15 +85,15 @@
     _model = model;
     
     
-    [self.userFace setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,model.userface]] placeholder:kGetImage(squarePlaceholder)];
-
+//    [self.userFace setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,model.userface]] placeholder:kGetImage(squarePlaceholder)];
+//
+//
+//
+//    self.nameLabel.text = model.phone;
+//
+//    self.timeLabel.text = model.order_time;
     
-    
-    self.nameLabel.text = model.phone;
-    
-    self.timeLabel.text = model.order_time;
-    
-    self.inviteLabel.text = [NSString stringWithFormat:@"邀请码:%@",model.usernumber];
+//    self.inviteLabel.text = [NSString stringWithFormat:@"邀请码:%@",model.usernumber];
     
 }
 

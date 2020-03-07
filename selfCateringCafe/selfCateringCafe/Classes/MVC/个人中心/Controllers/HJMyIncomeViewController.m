@@ -21,6 +21,12 @@
 /** alert */
 @property (nonatomic,copy) NSArray *alertArray;
 
+/** 价格 */
+@property (nonatomic,weak) UILabel *priceLabel;
+
+/** 字典 */
+@property (nonatomic,copy) NSDictionary *dic;
+
 
 @end
 
@@ -33,11 +39,35 @@
     
     self.dataArray = @[@"收益明细",@"提现记录"];
     
-    self.alertArray = @[@"1.满足提现金额：1.00元。",@"2.平台将收取提现金额的2.00%作为提现手续费。",@"3.工作日内24小时到账"];
-
     [self.view addSubview:self.tableView];
     
+    [self getData];
 }
+#pragma mark-获取数据
+-(void)getData
+{
+    [HUDManager showLoading];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"userid"] = userDefaultGet(userid);
+    [[HJNetWorkManager shareManager] AFPostDataUrl:@"Api/User/getCashtxt" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+        if (result.isSucess) {
+            
+            [HUDManager hidenHud];
+            
+            self.dic = result.data[@"amount"];
+            
+            self.alertArray = result.data[@"topic"];
+            
+            self.priceLabel.text = [NSString stringWithFormat:@"%@",result.data[@"amount"][@"amount"]];
+            
+            [self.tableView reloadData];
+        }
+    } Faild:^(NSError * _Nonnull error) {
+        
+    }];
+}
+
+
 #pragma mark-创建列表
 -(HJBaseTableview *)tableView
 {
@@ -77,6 +107,7 @@
             make.left.offset(15);
             make.bottom.offset(-15);
         }];
+        self.priceLabel = priceLabel;
         
         _tableView.tableHeaderView = headerView;
     }
@@ -115,6 +146,10 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         }
+        cell.withdrawIngLabel.text = [NSString stringWithFormat:@"%@\n\n%@",@"正在提现中(元)",self.dic[@"frezeamount"]];
+
+        cell.withdrawLabel.text = [NSString stringWithFormat:@"%@\n\n%@",@"可提现余额(元)",self.dic[@"amount"]];
+
         
         return cell;
         
@@ -219,6 +254,7 @@
         [submitBtn setTitle:@"我要提交" forState:UIControlStateNormal];
         submitBtn.titleLabel.font = [UIFont systemFontOfSize:15];
         [submitBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [submitBtn addTarget:self action:@selector(submitClick) forControlEvents:UIControlEventTouchUpInside];
         [footerView addSubview:submitBtn];
         [submitBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.offset(0);
@@ -256,6 +292,38 @@
 }
 
 
+#pragma mark-我要提交
+-(void)submitClick
+{
+    if (self.paycode.length == 0) {
+        
+        [HUDManager showStateHud:@"请添加付款码" state:HUDStateTypeFail];
+        
+        return;
+    }
+    [self showAlertTexfMessage:@"提示" placeHodel:@"请输入提现金额" leftTitle:@"取消" leftClick:^(id action) {
+    } rightTitle:@"确定" rightBlock:^(UITextField *action) {
+        
+        [HUDManager showLoading];
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        params[@"userid"] = userDefaultGet(userid);
+        params[@"usermoney"] = @([action.text floatValue]);
+        params[@"type"] = @"3";
+        [[HJNetWorkManager shareManager] AFPostDataUrl:@"/Api/User/withdraw" params:params sucessBlock:^(HJNetWorkModel * _Nonnull result) {
+            if (result.isSucess) {
+
+                [HUDManager showStateHud:@"提交成功" state:HUDStateTypeSuccess];
+
+                [self getData];
+            }
+        } Faild:^(NSError * _Nonnull error) {
+            
+        }];
+        
+        
+    }];
+    
+}
 
 
 @end

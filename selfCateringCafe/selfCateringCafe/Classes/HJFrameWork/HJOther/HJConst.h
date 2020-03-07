@@ -18,4 +18,7 @@ UIKIT_EXTERN NSString *const kApiPrefix;
 //图片资源地址
 UIKIT_EXTERN NSString *const ApiImagefix;
 
+//视频播放地址
+UIKIT_EXTERN NSString *const ApiVideoFix;
+
 extern NSString *const userid;

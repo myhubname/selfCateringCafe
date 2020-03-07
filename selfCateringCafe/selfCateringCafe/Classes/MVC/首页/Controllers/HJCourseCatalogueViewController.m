@@ -8,6 +8,8 @@
 
 #import "HJCourseCatalogueViewController.h"
 #import "HJCourseListTableViewCell.h"
+#import "HJLoginThirdGuideViewController.h"
+#import "HJBaseNavViewController.h"
 @interface HJCourseCatalogueViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 /** 列表 */
@@ -69,23 +71,33 @@
     return 60;
 }
 
-
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if ([self.dic[@"isbuy"] integerValue] == 1) {
+    if (userDefaultGet(userid) == nil) {
         
+        HJLoginThirdGuideViewController *thirdLogin = [[HJLoginThirdGuideViewController alloc] init];
         
+        HJBaseNavViewController *nav = [[HJBaseNavViewController alloc] initWithRootViewController:thirdLogin];
         
+        [self presentViewController:nav animated:YES completion:nil];
+
         
     }else
     {
-        [HUDManager showTextHud:@"请购买..."];
+        if ([self.dic[@"isbuy"] integerValue] == 1) {
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"playVideo" object:[NSString stringWithFormat:@"%@%@",ApiVideoFix,self.dic[@"chapter"][indexPath.row][@"video"]]];
+            
+            
+        }else
+        {
+            [HUDManager showTextHud:@"请购买..."];
+            
+        }
         
     }
-    
-    
 }
 
 

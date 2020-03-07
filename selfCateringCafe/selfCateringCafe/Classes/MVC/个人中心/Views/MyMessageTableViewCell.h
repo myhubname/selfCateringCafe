@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HJMessageModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MyMessageTableViewCell : UITableViewCell
+
+/** 模型 */
+@property (nonatomic,strong) HJMessageModel *model;
+
+
 
 @end
 

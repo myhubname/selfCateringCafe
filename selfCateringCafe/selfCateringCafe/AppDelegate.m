@@ -24,11 +24,7 @@
     [self HJSetUpKeyBoard];
 
 //    注册第三方
-  [WXApi registerApp:@"wx8b7fcf79789ccfd7" universalLink:@"https://appstoreconnect.apple.com/"];
-    
-    
-    
-    
+   [WXApi registerApp:@"wx8b7fcf79789ccfd7" universalLink:@"https://appstoreconnect.apple.com/"];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];

@@ -63,5 +63,36 @@
     }];
 }
 
+-(void)showAlertTexfMessage:(NSString *)message placeHodel:(NSString *)placeHodel leftTitle:(NSString *)leftTitle leftClick:(void (^)(id))leftBlock rightTitle:(NSString *)rightTitle rightBlock:(void (^)(id))rightBlock
+{
+    
+    UIAlertController *alertVc = [UIAlertController alertControllerWithTitle:nil message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    [alertVc addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = placeHodel;
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:leftTitle style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        leftBlock(action);
+    }];
+    [alertVc addAction:cancelAction];
+    [cancelAction setValue:[UIColor redColor] forKey:@"titleTextColor"];
+    
+    UIAlertAction *determinAction = [UIAlertAction actionWithTitle:rightTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *textField = alertVc.textFields.firstObject;
+        
+        rightBlock(textField);
+        
+    }];
+    
+    [determinAction setValue:[UIColor blackColor] forKey:@"titleTextColor"];
+    
+    [alertVc addAction:determinAction];
+    
+    [self presentViewController:alertVc animated:YES completion:nil];
+    
+}
+
 
 @end

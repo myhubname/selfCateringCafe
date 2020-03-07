@@ -9,7 +9,6 @@
 #import "HJMainTabBarViewController.h"
 #import "HJBaseNavViewController.h"
 #import "HJLoginThirdGuideViewController.h"
-#import "HJRecruitmentViewController.h"
 @interface HJMainTabBarViewController ()<UITabBarControllerDelegate>
 
 @property(nonatomic,assign) NSInteger Index;
@@ -49,8 +48,8 @@
 @[@{@"Class":@"HomPageViewController",@"name":@"首页",@"image":@"homeTabbarIconNomer",@"sel_image":@"homeTabbarIconSel"},
   @{@"Class":@"FanRingViewController",@"name":@"素材库",@"image":@"CoffeeTabbarNomer",@"sel_image":@"CoffeeTabbarSel"},
  
-  @{@"Class":@"HJRecruitmentViewController",@"name":@"院长招募",@"image":@"CooperationTabbarNomer",@"sel_image":@"CooperationTabbarSel"},
-  @{@"Class":@"WelfareViewController",@"name":@"福利社",@"image":@"WelfareTabbarNomer",@"sel_image":@"WelfareTabbarSel"},
+  @{@"Class":@"RecruitmentViewController",@"name":@"联创招募",@"image":@"CooperationTabbarNomer",@"sel_image":@"CooperationTabbarSel"},
+  @{@"Class":@"HJWelfareViewController",@"name":@"福利社",@"image":@"WelfareTabbarNomer",@"sel_image":@"WelfareTabbarSel"},
   @{@"Class":@"PersonalCenterViewController",@"name":@"个人中心",@"image":@"personalTabbarNomer",@"sel_image":@"personalTabbarSel"},
   
       
@@ -71,16 +70,6 @@
 
     vc.tabBarItem.selectedImage=[UIImage imageNamed:selectedImage];
     vc.tabBarItem.selectedImage=[vc.tabBarItem.selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    
-    if ([title isEqualToString:@"院长招募"]) {
-        
-      HJRecruitmentViewController   *recritmeVc = (HJRecruitmentViewController *)vc;
-      
-        recritmeVc.urlStr = [NSURL URLWithString:@"http://yhapp.ncid.cn/Index/openDean.html"];
-     
-        vc = recritmeVc;
-        
-    }
     
     HJBaseNavViewController *NavVc = [[HJBaseNavViewController alloc] initWithRootViewController:vc];
     [self addChildViewController:NavVc];

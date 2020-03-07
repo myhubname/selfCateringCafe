@@ -22,7 +22,7 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        [self creatUI];
+//        [self creatUI];
     }
     return self;
 }

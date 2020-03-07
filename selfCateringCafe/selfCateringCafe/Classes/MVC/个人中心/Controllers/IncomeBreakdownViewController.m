@@ -41,15 +41,18 @@
 {
     BreakdownChildViewController *allVc = [[BreakdownChildViewController alloc] init];
     allVc.title = @"推荐收益";
+    allVc.type = @"1";
     [self addChildViewController:allVc];
     
     BreakdownChildViewController *finishVc = [[BreakdownChildViewController alloc] init];
     finishVc.title = @"团队收益";
+    finishVc.type = @"2";
     [self addChildViewController:finishVc];
     
     
     BreakdownChildViewController *cancelVc = [[BreakdownChildViewController alloc] init];
     cancelVc.title = @"广告收益";
+    cancelVc.type = @"3";
     [self addChildViewController:cancelVc];
     
     

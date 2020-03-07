@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 /** 价格 */
 @property (nonatomic,weak) UILabel *priceLabel;
 
+/** 购买 */
+@property (nonatomic,weak) UIButton *buyButton;
 
 /** 按钮 */
 @property (nonatomic,copy) void(^buyBlock)(void);

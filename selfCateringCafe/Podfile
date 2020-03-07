@@ -14,6 +14,8 @@ target 'selfCateringCafe' do
   pod 'DZNEmptyDataSet'  
   pod 'WMPageController' 
   pod 'RFCircleCollectionViewFlowLayout'
+  pod 'JPVideoPlayer'
+  pod 'BRPickerView'
  # Pods for selfCateringCafe
  
 end

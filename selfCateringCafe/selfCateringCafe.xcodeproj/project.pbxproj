@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4B01B265235EEDA7005146EA /* HJUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B01B264235EEDA7005146EA /* HJUpgradeViewController.m */; };
+		4B09F1D42372661400D4DA87 /* CourseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F1D32372661400D4DA87 /* CourseModel.m */; };
+		4B09F1D723726B4E00D4DA87 /* ShowCateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F1D623726B4E00D4DA87 /* ShowCateView.m */; };
+		4B09F1DA237272A900D4DA87 /* UICollectionViewLeftAlignedLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B09F1D9237272A900D4DA87 /* UICollectionViewLeftAlignedLayout.m */; };
 		4B1371F2235D495C009E7A80 /* HJCoffeeBeanMissionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1371F1235D495C009E7A80 /* HJCoffeeBeanMissionTableViewCell.m */; };
 		4B1371F5235D559E009E7A80 /* HJUseTutorialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1371F4235D559E009E7A80 /* HJUseTutorialViewController.m */; };
 		4B1371F8235D55C7009E7A80 /* HJUseTutorialTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1371F7235D55C7009E7A80 /* HJUseTutorialTableViewCell.m */; };
@@ -34,6 +37,8 @@
 		4B762489235AAB4300B30E93 /* CourseChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B762488235AAB4300B30E93 /* CourseChildViewController.m */; };
 		4B76248C235AAC1100B30E93 /* MyCourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B76248B235AAC1100B30E93 /* MyCourseTableViewCell.m */; };
 		4B76248F235AB5CA00B30E93 /* HJCoffeeBeansViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B76248E235AB5CA00B30E93 /* HJCoffeeBeansViewController.m */; };
+		4B9852FF23C9BC8C0065F777 /* HJUploadQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9852FE23C9BC8B0065F777 /* HJUploadQRCodeViewController.m */; };
+		4B98530223C9C8250065F777 /* HJCashRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B98530123C9C8250065F777 /* HJCashRecordTableViewCell.m */; };
 		4B9BAF85231E0DE900933915 /* YBIBDefaultWebImageMediator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BAF40231E0DE900933915 /* YBIBDefaultWebImageMediator.m */; };
 		4B9BAF86231E0DE900933915 /* YBImageBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BAF42231E0DE900933915 /* YBImageBrowser.m */; };
 		4B9BAF87231E0DE900933915 /* YBIBImageLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BAF4D231E0DE900933915 /* YBIBImageLayout.m */; };
@@ -61,6 +66,19 @@
 		4B9BAF9D231E0DE900933915 /* YBIBCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BAF7A231E0DE900933915 /* YBIBCollectionViewLayout.m */; };
 		4B9BAF9E231E0DE900933915 /* YBIBAnimatedTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B9BAF7C231E0DE900933915 /* YBIBAnimatedTransition.m */; };
 		4B9BAF9F231E0DE900933915 /* YBImageBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4B9BAF84231E0DE900933915 /* YBImageBrowser.bundle */; };
+		4BA8F0A82383D90700116017 /* HJPayTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0A72383D90700116017 /* HJPayTypeViewController.m */; };
+		4BA8F0AB2383DCE400116017 /* HJWelfareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0AA2383DCE400116017 /* HJWelfareViewController.m */; };
+		4BA8F0AF2384DDAC00116017 /* HJExchangeRecordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0AE2384DDAC00116017 /* HJExchangeRecordsViewController.m */; };
+		4BA8F0B22384E87B00116017 /* HJExchangeRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0B12384E87B00116017 /* HJExchangeRecordTableViewCell.m */; };
+		4BA8F0B52385280100116017 /* HJChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0B42385280100116017 /* HJChangePasswordViewController.m */; };
+		4BA8F0C22385346600116017 /* CYConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0B72385346600116017 /* CYConst.m */; };
+		4BA8F0C32385346600116017 /* CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0B82385346600116017 /* CYPasswordView.m */; };
+		4BA8F0C42385346600116017 /* CYPasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0B92385346600116017 /* CYPasswordInputView.m */; };
+		4BA8F0C52385346600116017 /* NSBundle+CYPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0BF2385346600116017 /* NSBundle+CYPasswordView.m */; };
+		4BA8F0C62385346600116017 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BA8F0C02385346600116017 /* UIView+Extension.m */; };
+		4BA8F0C72385346600116017 /* CYPasswordView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4BA8F0C12385346600116017 /* CYPasswordView.bundle */; };
+		4BB44408237D424F0077F647 /* HJShopSubmitOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB44407237D424F0077F647 /* HJShopSubmitOrderViewController.m */; };
+		4BB4440B237D54190077F647 /* HJAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB4440A237D54190077F647 /* HJAddressViewController.m */; };
 		4BB49B12233F63DD0077696E /* WelfareInviteFrend.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB49B11233F63DD0077696E /* WelfareInviteFrend.m */; };
 		4BB49B152340466A0077696E /* HJProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB49B142340466A0077696E /* HJProgressView.m */; };
 		4BB49B1823404F4F0077696E /* HJVipinterests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB49B1723404F4F0077696E /* HJVipinterests.m */; };
@@ -77,9 +95,15 @@
 		4BD01CC8231D186A00EEA746 /* FanRingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD01CC7231D186A00EEA746 /* FanRingModel.m */; };
 		4BD01CCB231D1EC300EEA746 /* YYControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD01CC9231D1EC300EEA746 /* YYControl.m */; };
 		4BD4A18223603855008D1FC0 /* HJModifyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD4A18123603855008D1FC0 /* HJModifyPhoneViewController.m */; };
+		4BD76BF123CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BD76BF023CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.m */; };
+		4BE175542379657C00037D3E /* HJMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE175532379657C00037D3E /* HJMessageModel.m */; };
+		4BE17557237A461F00037D3E /* HJRecommendAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE17556237A461F00037D3E /* HJRecommendAlertView.m */; };
+		4BE1755D237AA48400037D3E /* HJTeamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1755C237AA48400037D3E /* HJTeamTableViewCell.m */; };
+		4BE17560237AB61500037D3E /* HJCoffeBeanDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE1755F237AB61500037D3E /* HJCoffeBeanDetailViewController.m */; };
+		4BE17563237BAF4000037D3E /* ShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE17562237BAF4000037D3E /* ShopModel.m */; };
+		4BE17566237BB15300037D3E /* HJShopDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE17565237BB15300037D3E /* HJShopDetailViewController.m */; };
 		4BE8F0BF2357126200DD4E08 /* HJMineMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0BE2357126200DD4E08 /* HJMineMessageViewController.m */; };
 		4BE8F0C2235712ED00DD4E08 /* HJMyTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0C1235712ED00DD4E08 /* HJMyTeamViewController.m */; };
-		4BE8F0C5235717D600DD4E08 /* HJRecruitmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0C4235717D600DD4E08 /* HJRecruitmentViewController.m */; };
 		4BE8F0C823571B1400DD4E08 /* PromotionOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0C723571B1400DD4E08 /* PromotionOrderViewController.m */; };
 		4BE8F0CB23571BB900DD4E08 /* ProOrderChildViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0CA23571BB900DD4E08 /* ProOrderChildViewController.m */; };
 		4BE8F0CE23571D3B00DD4E08 /* TeamIncomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BE8F0CD23571D3B00DD4E08 /* TeamIncomeViewController.m */; };
@@ -148,12 +172,29 @@
 		4BFAFADB2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFADA2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m */; };
 		4BFAFADE2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFADD2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m */; };
 		4BFAFAE12318C5C900688C68 /* WelfareHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFAFAE02318C5C900688C68 /* WelfareHeader.m */; };
+		4BFC15C6237F8E74002CD952 /* HJAddressFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC15C5237F8E74002CD952 /* HJAddressFooter.m */; };
+		4BFC15C9237F9061002CD952 /* HJAddressTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC15C8237F9061002CD952 /* HJAddressTableViewCell.m */; };
+		4BFC15CC237FA32A002CD952 /* HJAddAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC15CB237FA32A002CD952 /* HJAddAddressController.m */; };
+		4BFC15CF237FA57C002CD952 /* HJAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC15CE237FA57C002CD952 /* HJAddressModel.m */; };
 		BB602B8AB366442DAE897A7F /* libPods-selfCateringCafe.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9E8CDBFC3EAFF985B28B1E6 /* libPods-selfCateringCafe.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4B01B263235EEDA7005146EA /* HJUpgradeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJUpgradeViewController.h; sourceTree = "<group>"; };
 		4B01B264235EEDA7005146EA /* HJUpgradeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJUpgradeViewController.m; sourceTree = "<group>"; };
+		4B09F1C1236D20D700D4DA87 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4B09F1C3236D20F400D4DA87 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4B09F1C5236D20FD00D4DA87 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		4B09F1C7236D210800D4DA87 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		4B09F1C9236D211400D4DA87 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		4B09F1CB236D211F00D4DA87 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		4B09F1CD236D212A00D4DA87 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4B09F1D22372661400D4DA87 /* CourseModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CourseModel.h; sourceTree = "<group>"; };
+		4B09F1D32372661400D4DA87 /* CourseModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CourseModel.m; sourceTree = "<group>"; };
+		4B09F1D523726B4E00D4DA87 /* ShowCateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShowCateView.h; sourceTree = "<group>"; };
+		4B09F1D623726B4E00D4DA87 /* ShowCateView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShowCateView.m; sourceTree = "<group>"; };
+		4B09F1D8237272A800D4DA87 /* UICollectionViewLeftAlignedLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICollectionViewLeftAlignedLayout.h; sourceTree = "<group>"; };
+		4B09F1D9237272A900D4DA87 /* UICollectionViewLeftAlignedLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewLeftAlignedLayout.m; sourceTree = "<group>"; };
 		4B1371F0235D495C009E7A80 /* HJCoffeeBeanMissionTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCoffeeBeanMissionTableViewCell.h; sourceTree = "<group>"; };
 		4B1371F1235D495C009E7A80 /* HJCoffeeBeanMissionTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCoffeeBeanMissionTableViewCell.m; sourceTree = "<group>"; };
 		4B1371F3235D559E009E7A80 /* HJUseTutorialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJUseTutorialViewController.h; sourceTree = "<group>"; };
@@ -206,6 +247,10 @@
 		4B76248B235AAC1100B30E93 /* MyCourseTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyCourseTableViewCell.m; sourceTree = "<group>"; };
 		4B76248D235AB5CA00B30E93 /* HJCoffeeBeansViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCoffeeBeansViewController.h; sourceTree = "<group>"; };
 		4B76248E235AB5CA00B30E93 /* HJCoffeeBeansViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCoffeeBeansViewController.m; sourceTree = "<group>"; };
+		4B9852FD23C9BC8B0065F777 /* HJUploadQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJUploadQRCodeViewController.h; sourceTree = "<group>"; };
+		4B9852FE23C9BC8B0065F777 /* HJUploadQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJUploadQRCodeViewController.m; sourceTree = "<group>"; };
+		4B98530023C9C8240065F777 /* HJCashRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCashRecordTableViewCell.h; sourceTree = "<group>"; };
+		4B98530123C9C8250065F777 /* HJCashRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCashRecordTableViewCell.m; sourceTree = "<group>"; };
 		4B9BAF3F231E0DE900933915 /* YBIBDefaultWebImageMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIBDefaultWebImageMediator.h; sourceTree = "<group>"; };
 		4B9BAF40231E0DE900933915 /* YBIBDefaultWebImageMediator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YBIBDefaultWebImageMediator.m; sourceTree = "<group>"; };
 		4B9BAF41231E0DE900933915 /* YBIBWebImageMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIBWebImageMediator.h; sourceTree = "<group>"; };
@@ -270,6 +315,31 @@
 		4B9BAF82231E0DE900933915 /* YBIBAnimatedTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBIBAnimatedTransition.h; sourceTree = "<group>"; };
 		4B9BAF83231E0DE900933915 /* YBImageBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YBImageBrowser.h; sourceTree = "<group>"; };
 		4B9BAF84231E0DE900933915 /* YBImageBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = YBImageBrowser.bundle; sourceTree = "<group>"; };
+		4BA8F0A62383D90700116017 /* HJPayTypeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJPayTypeViewController.h; sourceTree = "<group>"; };
+		4BA8F0A72383D90700116017 /* HJPayTypeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJPayTypeViewController.m; sourceTree = "<group>"; };
+		4BA8F0A92383DCE400116017 /* HJWelfareViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJWelfareViewController.h; sourceTree = "<group>"; };
+		4BA8F0AA2383DCE400116017 /* HJWelfareViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJWelfareViewController.m; sourceTree = "<group>"; };
+		4BA8F0AD2384DDAC00116017 /* HJExchangeRecordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJExchangeRecordsViewController.h; sourceTree = "<group>"; };
+		4BA8F0AE2384DDAC00116017 /* HJExchangeRecordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJExchangeRecordsViewController.m; sourceTree = "<group>"; };
+		4BA8F0B02384E87B00116017 /* HJExchangeRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJExchangeRecordTableViewCell.h; sourceTree = "<group>"; };
+		4BA8F0B12384E87B00116017 /* HJExchangeRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJExchangeRecordTableViewCell.m; sourceTree = "<group>"; };
+		4BA8F0B32385280100116017 /* HJChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJChangePasswordViewController.h; sourceTree = "<group>"; };
+		4BA8F0B42385280100116017 /* HJChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJChangePasswordViewController.m; sourceTree = "<group>"; };
+		4BA8F0B72385346600116017 /* CYConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYConst.m; sourceTree = "<group>"; };
+		4BA8F0B82385346600116017 /* CYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordView.m; sourceTree = "<group>"; };
+		4BA8F0B92385346600116017 /* CYPasswordInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CYPasswordInputView.m; sourceTree = "<group>"; };
+		4BA8F0BA2385346600116017 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		4BA8F0BB2385346600116017 /* NSBundle+CYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+CYPasswordView.h"; sourceTree = "<group>"; };
+		4BA8F0BC2385346600116017 /* CYPasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordInputView.h; sourceTree = "<group>"; };
+		4BA8F0BD2385346600116017 /* CYPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYPasswordView.h; sourceTree = "<group>"; };
+		4BA8F0BE2385346600116017 /* CYConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYConst.h; sourceTree = "<group>"; };
+		4BA8F0BF2385346600116017 /* NSBundle+CYPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+CYPasswordView.m"; sourceTree = "<group>"; };
+		4BA8F0C02385346600116017 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		4BA8F0C12385346600116017 /* CYPasswordView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CYPasswordView.bundle; sourceTree = "<group>"; };
+		4BB44406237D424F0077F647 /* HJShopSubmitOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJShopSubmitOrderViewController.h; sourceTree = "<group>"; };
+		4BB44407237D424F0077F647 /* HJShopSubmitOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJShopSubmitOrderViewController.m; sourceTree = "<group>"; };
+		4BB44409237D54190077F647 /* HJAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAddressViewController.h; sourceTree = "<group>"; };
+		4BB4440A237D54190077F647 /* HJAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAddressViewController.m; sourceTree = "<group>"; };
 		4BB49B10233F63DD0077696E /* WelfareInviteFrend.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelfareInviteFrend.h; sourceTree = "<group>"; };
 		4BB49B11233F63DD0077696E /* WelfareInviteFrend.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelfareInviteFrend.m; sourceTree = "<group>"; };
 		4BB49B132340466A0077696E /* HJProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJProgressView.h; sourceTree = "<group>"; };
@@ -302,12 +372,25 @@
 		4BD01CCA231D1EC300EEA746 /* YYControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YYControl.h; path = "selfCateringCafe/Classes/MVC/粉丝圈/Views/YYControl.h"; sourceTree = SOURCE_ROOT; };
 		4BD4A18023603855008D1FC0 /* HJModifyPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJModifyPhoneViewController.h; sourceTree = "<group>"; };
 		4BD4A18123603855008D1FC0 /* HJModifyPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJModifyPhoneViewController.m; sourceTree = "<group>"; };
+		4BD76BEF23CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJGetPriceDetailTableViewCell.h; sourceTree = "<group>"; };
+		4BD76BF023CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJGetPriceDetailTableViewCell.m; sourceTree = "<group>"; };
+		4BE175522379657C00037D3E /* HJMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJMessageModel.h; sourceTree = "<group>"; };
+		4BE175532379657C00037D3E /* HJMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJMessageModel.m; sourceTree = "<group>"; };
+		4BE17555237A461F00037D3E /* HJRecommendAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJRecommendAlertView.h; sourceTree = "<group>"; };
+		4BE17556237A461F00037D3E /* HJRecommendAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJRecommendAlertView.m; sourceTree = "<group>"; };
+		4BE1755A237A94AA00037D3E /* selfCateringCafe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = selfCateringCafe.entitlements; sourceTree = "<group>"; };
+		4BE1755B237AA48400037D3E /* HJTeamTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJTeamTableViewCell.h; sourceTree = "<group>"; };
+		4BE1755C237AA48400037D3E /* HJTeamTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJTeamTableViewCell.m; sourceTree = "<group>"; };
+		4BE1755E237AB61500037D3E /* HJCoffeBeanDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCoffeBeanDetailViewController.h; sourceTree = "<group>"; };
+		4BE1755F237AB61500037D3E /* HJCoffeBeanDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCoffeBeanDetailViewController.m; sourceTree = "<group>"; };
+		4BE17561237BAF4000037D3E /* ShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopModel.h; sourceTree = "<group>"; };
+		4BE17562237BAF4000037D3E /* ShopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopModel.m; sourceTree = "<group>"; };
+		4BE17564237BB15300037D3E /* HJShopDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJShopDetailViewController.h; sourceTree = "<group>"; };
+		4BE17565237BB15300037D3E /* HJShopDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJShopDetailViewController.m; sourceTree = "<group>"; };
 		4BE8F0BD2357126200DD4E08 /* HJMineMessageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJMineMessageViewController.h; sourceTree = "<group>"; };
 		4BE8F0BE2357126200DD4E08 /* HJMineMessageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJMineMessageViewController.m; sourceTree = "<group>"; };
 		4BE8F0C0235712ED00DD4E08 /* HJMyTeamViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJMyTeamViewController.h; sourceTree = "<group>"; };
 		4BE8F0C1235712ED00DD4E08 /* HJMyTeamViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJMyTeamViewController.m; sourceTree = "<group>"; };
-		4BE8F0C3235717D600DD4E08 /* HJRecruitmentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJRecruitmentViewController.h; sourceTree = "<group>"; };
-		4BE8F0C4235717D600DD4E08 /* HJRecruitmentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJRecruitmentViewController.m; sourceTree = "<group>"; };
 		4BE8F0C623571B1400DD4E08 /* PromotionOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PromotionOrderViewController.h; sourceTree = "<group>"; };
 		4BE8F0C723571B1400DD4E08 /* PromotionOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PromotionOrderViewController.m; sourceTree = "<group>"; };
 		4BE8F0C923571BB900DD4E08 /* ProOrderChildViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProOrderChildViewController.h; sourceTree = "<group>"; };
@@ -447,6 +530,14 @@
 		4BFAFADD2318B83E00688C68 /* HJPersonalChnageBtnTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJPersonalChnageBtnTableViewCell.m; sourceTree = "<group>"; };
 		4BFAFADF2318C5C900688C68 /* WelfareHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelfareHeader.h; sourceTree = "<group>"; };
 		4BFAFAE02318C5C900688C68 /* WelfareHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelfareHeader.m; sourceTree = "<group>"; };
+		4BFC15C4237F8E74002CD952 /* HJAddressFooter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAddressFooter.h; sourceTree = "<group>"; };
+		4BFC15C5237F8E74002CD952 /* HJAddressFooter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAddressFooter.m; sourceTree = "<group>"; };
+		4BFC15C7237F9061002CD952 /* HJAddressTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAddressTableViewCell.h; sourceTree = "<group>"; };
+		4BFC15C8237F9061002CD952 /* HJAddressTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAddressTableViewCell.m; sourceTree = "<group>"; };
+		4BFC15CA237FA32A002CD952 /* HJAddAddressController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAddAddressController.h; sourceTree = "<group>"; };
+		4BFC15CB237FA32A002CD952 /* HJAddAddressController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAddAddressController.m; sourceTree = "<group>"; };
+		4BFC15CD237FA57C002CD952 /* HJAddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJAddressModel.h; sourceTree = "<group>"; };
+		4BFC15CE237FA57C002CD952 /* HJAddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJAddressModel.m; sourceTree = "<group>"; };
 		B9E8CDBFC3EAFF985B28B1E6 /* libPods-selfCateringCafe.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-selfCateringCafe.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC5DDE34909471A1A57744A5 /* Pods-selfCateringCafe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selfCateringCafe.release.xcconfig"; path = "Target Support Files/Pods-selfCateringCafe/Pods-selfCateringCafe.release.xcconfig"; sourceTree = "<group>"; };
 		F3CA107E350A48DE3AFCFA40 /* Pods-selfCateringCafe.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-selfCateringCafe.debug.xcconfig"; path = "Target Support Files/Pods-selfCateringCafe/Pods-selfCateringCafe.debug.xcconfig"; sourceTree = "<group>"; };
@@ -605,6 +696,24 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		4BA8F0B62385346600116017 /* CYPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				4BA8F0B72385346600116017 /* CYConst.m */,
+				4BA8F0B82385346600116017 /* CYPasswordView.m */,
+				4BA8F0B92385346600116017 /* CYPasswordInputView.m */,
+				4BA8F0BA2385346600116017 /* UIView+Extension.h */,
+				4BA8F0BB2385346600116017 /* NSBundle+CYPasswordView.h */,
+				4BA8F0BC2385346600116017 /* CYPasswordInputView.h */,
+				4BA8F0BD2385346600116017 /* CYPasswordView.h */,
+				4BA8F0BE2385346600116017 /* CYConst.h */,
+				4BA8F0BF2385346600116017 /* NSBundle+CYPasswordView.m */,
+				4BA8F0C02385346600116017 /* UIView+Extension.m */,
+				4BA8F0C12385346600116017 /* CYPasswordView.bundle */,
+			);
+			path = CYPasswordView;
+			sourceTree = "<group>";
+		};
 		4BFA5146236A6AC700E5D5DF /* WeChatSDK1.8.6.1 */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,6 +747,7 @@
 		4BFAF8CF23175C3700688C68 /* selfCateringCafe */ = {
 			isa = PBXGroup;
 			children = (
+				4BE1755A237A94AA00037D3E /* selfCateringCafe.entitlements */,
 				4BFAF8E723175FFB00688C68 /* Classes */,
 				4BFAF8E623175FD500688C68 /* Resource */,
 				4BFAF8D023175C3700688C68 /* AppDelegate.h */,
@@ -836,6 +946,7 @@
 		4BFAFA1F23176DC500688C68 /* HJThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				4BA8F0B62385346600116017 /* CYPasswordView */,
 				4BFA5146236A6AC700E5D5DF /* WeChatSDK1.8.6.1 */,
 				4B9BAF3D231E0DE900933915 /* YBImageBrowser */,
 				4BFAFAC92317CCFF00688C68 /* LMJVerticalScrollText */,
@@ -978,6 +1089,10 @@
 		4BFAFAA42317B69000688C68 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4B09F1D22372661400D4DA87 /* CourseModel.h */,
+				4B09F1D32372661400D4DA87 /* CourseModel.m */,
+				4BE17561237BAF4000037D3E /* ShopModel.h */,
+				4BE17562237BAF4000037D3E /* ShopModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -999,6 +1114,10 @@
 				4BEAAC6A234ECA050057B105 /* HJCourseWebDetailViewController.m */,
 				4BEAAC6C234ECDA50057B105 /* HJCourseCatalogueViewController.h */,
 				4BEAAC6D234ECDA50057B105 /* HJCourseCatalogueViewController.m */,
+				4BE17564237BB15300037D3E /* HJShopDetailViewController.h */,
+				4BE17565237BB15300037D3E /* HJShopDetailViewController.m */,
+				4BB44406237D424F0077F647 /* HJShopSubmitOrderViewController.h */,
+				4BB44407237D424F0077F647 /* HJShopSubmitOrderViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1006,6 +1125,8 @@
 		4BFAFAA82317B69000688C68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4B09F1D8237272A800D4DA87 /* UICollectionViewLeftAlignedLayout.h */,
+				4B09F1D9237272A900D4DA87 /* UICollectionViewLeftAlignedLayout.m */,
 				4BFAFAC32317C26600688C68 /* HomePageHeader.h */,
 				4BFAFAC42317C26600688C68 /* HomePageHeader.m */,
 				4BFAFAC62317C28D00688C68 /* ExcellentCoursesTableViewCell.h */,
@@ -1028,6 +1149,8 @@
 				4BEAAC73234ED00E0057B105 /* CourseCatalogueTableViewCell.m */,
 				4BFA51432369918A00E5D5DF /* HJCourseListTableViewCell.h */,
 				4BFA51442369918A00E5D5DF /* HJCourseListTableViewCell.m */,
+				4B09F1D523726B4E00D4DA87 /* ShowCateView.h */,
+				4B09F1D623726B4E00D4DA87 /* ShowCateView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1035,6 +1158,8 @@
 		4BFAFAAA2317B6B400688C68 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				4B9852FD23C9BC8B0065F777 /* HJUploadQRCodeViewController.h */,
+				4B9852FE23C9BC8B0065F777 /* HJUploadQRCodeViewController.m */,
 				4BFAFAAB2317B6B400688C68 /* PersonalCenterViewController.h */,
 				4BFAFAAC2317B6B400688C68 /* PersonalCenterViewController.m */,
 				4B2C765A231FF24A00D03145 /* SeverViewController.h */,
@@ -1075,6 +1200,16 @@
 				4B01B264235EEDA7005146EA /* HJUpgradeViewController.m */,
 				4BD4A18023603855008D1FC0 /* HJModifyPhoneViewController.h */,
 				4BD4A18123603855008D1FC0 /* HJModifyPhoneViewController.m */,
+				4BE1755E237AB61500037D3E /* HJCoffeBeanDetailViewController.h */,
+				4BE1755F237AB61500037D3E /* HJCoffeBeanDetailViewController.m */,
+				4BB44409237D54190077F647 /* HJAddressViewController.h */,
+				4BB4440A237D54190077F647 /* HJAddressViewController.m */,
+				4BFC15CA237FA32A002CD952 /* HJAddAddressController.h */,
+				4BFC15CB237FA32A002CD952 /* HJAddAddressController.m */,
+				4BA8F0AD2384DDAC00116017 /* HJExchangeRecordsViewController.h */,
+				4BA8F0AE2384DDAC00116017 /* HJExchangeRecordsViewController.m */,
+				4BA8F0B32385280100116017 /* HJChangePasswordViewController.h */,
+				4BA8F0B42385280100116017 /* HJChangePasswordViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1086,6 +1221,10 @@
 				4BE8F0D02357209800DD4E08 /* HJProOrderModel.m */,
 				4B1371F9235D5808009E7A80 /* UseTutorialModel.h */,
 				4B1371FA235D5808009E7A80 /* UseTutorialModel.m */,
+				4BE175522379657C00037D3E /* HJMessageModel.h */,
+				4BE175532379657C00037D3E /* HJMessageModel.m */,
+				4BFC15CD237FA57C002CD952 /* HJAddressModel.h */,
+				4BFC15CE237FA57C002CD952 /* HJAddressModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1093,6 +1232,8 @@
 		4BFAFAAE2317B6B400688C68 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BE17555237A461F00037D3E /* HJRecommendAlertView.h */,
+				4BE17556237A461F00037D3E /* HJRecommendAlertView.m */,
 				4BFAFAD62318A5E100688C68 /* PersonalHeader.h */,
 				4BFAFAD72318A5E100688C68 /* PersonalHeader.m */,
 				4BFAFAD92318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.h */,
@@ -1127,6 +1268,18 @@
 				4B137205235DA356009E7A80 /* HJDeanHeader.m */,
 				4B137207235DB854009E7A80 /* HJDeanTableViewCell.h */,
 				4B137208235DB854009E7A80 /* HJDeanTableViewCell.m */,
+				4BE1755B237AA48400037D3E /* HJTeamTableViewCell.h */,
+				4BE1755C237AA48400037D3E /* HJTeamTableViewCell.m */,
+				4BFC15C4237F8E74002CD952 /* HJAddressFooter.h */,
+				4BFC15C5237F8E74002CD952 /* HJAddressFooter.m */,
+				4BFC15C7237F9061002CD952 /* HJAddressTableViewCell.h */,
+				4BFC15C8237F9061002CD952 /* HJAddressTableViewCell.m */,
+				4BA8F0B02384E87B00116017 /* HJExchangeRecordTableViewCell.h */,
+				4BA8F0B12384E87B00116017 /* HJExchangeRecordTableViewCell.m */,
+				4B98530023C9C8240065F777 /* HJCashRecordTableViewCell.h */,
+				4B98530123C9C8250065F777 /* HJCashRecordTableViewCell.m */,
+				4BD76BEF23CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.h */,
+				4BD76BF023CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1158,6 +1311,8 @@
 			children = (
 				4BFAFAC02317B9F700688C68 /* WelfareViewController.h */,
 				4BFAFAC12317B9F700688C68 /* WelfareViewController.m */,
+				4BA8F0A92383DCE400116017 /* HJWelfareViewController.h */,
+				4BA8F0AA2383DCE400116017 /* HJWelfareViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1174,8 +1329,8 @@
 			children = (
 				4BFAFABD2317B9C200688C68 /* RecruitmentViewController.h */,
 				4BFAFABE2317B9C200688C68 /* RecruitmentViewController.m */,
-				4BE8F0C3235717D600DD4E08 /* HJRecruitmentViewController.h */,
-				4BE8F0C4235717D600DD4E08 /* HJRecruitmentViewController.m */,
+				4BA8F0A62383D90700116017 /* HJPayTypeViewController.h */,
+				4BA8F0A72383D90700116017 /* HJPayTypeViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1244,6 +1399,13 @@
 		A73199FEE81A8AE59C223113 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B09F1CD236D212A00D4DA87 /* libz.tbd */,
+				4B09F1CB236D211F00D4DA87 /* libbz2.tbd */,
+				4B09F1C9236D211400D4DA87 /* libiconv.tbd */,
+				4B09F1C7236D210800D4DA87 /* OpenGLES.framework */,
+				4B09F1C5236D20FD00D4DA87 /* VideoToolbox.framework */,
+				4B09F1C3236D20F400D4DA87 /* MediaPlayer.framework */,
+				4B09F1C1236D20D700D4DA87 /* AudioToolbox.framework */,
 				4BFA5154236A74AA00E5D5DF /* libc++.tbd */,
 				4BFA5152236A73F100E5D5DF /* CoreGraphics.framework */,
 				4BFA5150236A73DF00E5D5DF /* Foundation.framework */,
@@ -1286,6 +1448,11 @@
 				TargetAttributes = {
 					4BFAF8CC23175C3700688C68 = {
 						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.WAC = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -1296,6 +1463,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 4BFAF8C423175C3700688C68;
 			productRefGroup = 4BFAF8CE23175C3700688C68 /* Products */;
@@ -1317,6 +1485,7 @@
 				4BFAFA8A23176DC500688C68 /* MBProgressHUD.bundle in Resources */,
 				4B9BAF9F231E0DE900933915 /* YBImageBrowser.bundle in Resources */,
 				4BFA514C236A6AC700E5D5DF /* README.txt in Resources */,
+				4BA8F0C72385346600116017 /* CYPasswordView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1354,14 +1523,18 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-selfCateringCafe/Pods-selfCateringCafe-resources.sh",
+				"${PODS_ROOT}/BRPickerView/BRPickerView/AddressPickerView/BRPickerView.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
+				"${PODS_ROOT}/JPVideoPlayer/JPVideoPlayer/JPVideoPlayer.bundle",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/BRPickerView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/JPVideoPlayer.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1398,6 +1571,7 @@
 				4B1371FB235D5808009E7A80 /* UseTutorialModel.m in Sources */,
 				4BFAFAAF2317B6B400688C68 /* PersonalCenterViewController.m in Sources */,
 				4BC068FE2359AEEE00CC3CBD /* MyMessageTableViewCell.m in Sources */,
+				4B09F1D723726B4E00D4DA87 /* ShowCateView.m in Sources */,
 				4BFAFA8B23176DC500688C68 /* HJConst.m in Sources */,
 				4B76247D235A9B2500B30E93 /* BreakdownChildViewController.m in Sources */,
 				4B9BAF89231E0DE900933915 /* YBIBInteractionProfile.m in Sources */,
@@ -1405,13 +1579,17 @@
 				4BE8F0D42357218700DD4E08 /* HJProOrderTableViewCell.m in Sources */,
 				4B9BAF93231E0DE900933915 /* YBIBCopywriter.m in Sources */,
 				4BEAAC71234ECE200057B105 /* CoursePayBottom.m in Sources */,
+				4BA8F0B52385280100116017 /* HJChangePasswordViewController.m in Sources */,
 				4B5CB310232100C900F18C33 /* HJShopTopView.m in Sources */,
 				4BFAFAC82317C28D00688C68 /* ExcellentCoursesTableViewCell.m in Sources */,
 				4BFAFABC2317B97F00688C68 /* FanRingViewController.m in Sources */,
 				4BD01CCB231D1EC300EEA746 /* YYControl.m in Sources */,
 				4B5CB30D2321005200F18C33 /* HJSeverViewController.m in Sources */,
+				4BFC15CC237FA32A002CD952 /* HJAddAddressController.m in Sources */,
 				4B1371F2235D495C009E7A80 /* HJCoffeeBeanMissionTableViewCell.m in Sources */,
 				4BFAFA7C23176DC500688C68 /* WRHelper.m in Sources */,
+				4BA8F0B22384E87B00116017 /* HJExchangeRecordTableViewCell.m in Sources */,
+				4BE17566237BB15300037D3E /* HJShopDetailViewController.m in Sources */,
 				4B9BAF98231E0DE900933915 /* YBIBSheetView.m in Sources */,
 				4BE8F0C2235712ED00DD4E08 /* HJMyTeamViewController.m in Sources */,
 				4BFAFAC22317B9F700688C68 /* WelfareViewController.m in Sources */,
@@ -1421,15 +1599,18 @@
 				4BEAAC6B234ECA050057B105 /* HJCourseWebDetailViewController.m in Sources */,
 				4BD01CBF231CFB4700EEA746 /* FanRingChildViewController.m in Sources */,
 				4BFAFA6823176DC500688C68 /* HJPlaceHodelTextView.m in Sources */,
+				4BA8F0C62385346600116017 /* UIView+Extension.m in Sources */,
 				4BFAFA7923176DC500688C68 /* PPNumberButton.m in Sources */,
 				4BFAFA6E23176DC500688C68 /* UIImageView+initImageView.m in Sources */,
 				4BFAFA8423176DC500688C68 /* HJBaseViewController.m in Sources */,
 				4B1371F8235D55C7009E7A80 /* HJUseTutorialTableViewCell.m in Sources */,
+				4BFC15C6237F8E74002CD952 /* HJAddressFooter.m in Sources */,
 				4B9BAF8E231E0DE900933915 /* YBIBToastView.m in Sources */,
 				4BFAFAE12318C5C900688C68 /* WelfareHeader.m in Sources */,
 				4B76247A235A9ABD00B30E93 /* IncomeBreakdownViewController.m in Sources */,
 				4BFAFA6623176DC500688C68 /* HJInputBoxLimitsWordCount.m in Sources */,
 				4B9BAF8F231E0DE900933915 /* YBIBLoadingView.m in Sources */,
+				4BFC15CF237FA57C002CD952 /* HJAddressModel.m in Sources */,
 				4B9BAF9D231E0DE900933915 /* YBIBCollectionViewLayout.m in Sources */,
 				4BD01CC5231D09CE00EEA746 /* HJNetWorkManager.m in Sources */,
 				4BC068FB2359AEAD00CC3CBD /* HJMyIncomeViewController.m in Sources */,
@@ -1437,31 +1618,40 @@
 				4BEAAC74234ED00E0057B105 /* CourseCatalogueTableViewCell.m in Sources */,
 				4BFAFA7123176DC500688C68 /* HJCatche.m in Sources */,
 				4BE8F0CB23571BB900DD4E08 /* ProOrderChildViewController.m in Sources */,
+				4BA8F0C52385346600116017 /* NSBundle+CYPasswordView.m in Sources */,
 				4B2C7650231FE83700D03145 /* HJCourseViewController.m in Sources */,
 				4BFAFA8623176DC500688C68 /* HJNetWorkModel.m in Sources */,
 				4BEA7CE8234E189D002F0972 /* HJCourseDetailViewController.m in Sources */,
 				4B9BAF9B231E0DE900933915 /* YBIBDataMediator.m in Sources */,
+				4BA8F0AF2384DDAC00116017 /* HJExchangeRecordsViewController.m in Sources */,
 				4B9BAF8D231E0DE900933915 /* YBIBImageData.m in Sources */,
+				4B98530223C9C8250065F777 /* HJCashRecordTableViewCell.m in Sources */,
 				4B9BAF96231E0DE900933915 /* YBIBTopView.m in Sources */,
 				4B9BAF94231E0DE900933915 /* YBIBUtilities.m in Sources */,
 				4BC068ED2358465200CC3CBD /* HJTeamTypeHeader.m in Sources */,
 				4B2C765C231FF24A00D03145 /* SeverViewController.m in Sources */,
+				4BE175542379657C00037D3E /* HJMessageModel.m in Sources */,
 				4BFAFAD22317CCFF00688C68 /* UILabel+ForLMJVerticalScrollText.m in Sources */,
 				4BFAFA9123176FF900688C68 /* HJLoginThirdGuideViewController.m in Sources */,
 				4B76248C235AAC1100B30E93 /* MyCourseTableViewCell.m in Sources */,
 				4BFAFA8923176DC500688C68 /* HUDManager.m in Sources */,
+				4BFC15C9237F9061002CD952 /* HJAddressTableViewCell.m in Sources */,
 				4BFAF8E023175C3900688C68 /* main.m in Sources */,
+				4BA8F0AB2383DCE400116017 /* HJWelfareViewController.m in Sources */,
 				4B762486235AAA7F00B30E93 /* MyCoursesViewController.m in Sources */,
-				4BE8F0C5235717D600DD4E08 /* HJRecruitmentViewController.m in Sources */,
 				4BFA5158236A815C00E5D5DF /* HJBangdingViewController.m in Sources */,
 				4B01B265235EEDA7005146EA /* HJUpgradeViewController.m in Sources */,
+				4BE1755D237AA48400037D3E /* HJTeamTableViewCell.m in Sources */,
 				4BD4A18223603855008D1FC0 /* HJModifyPhoneViewController.m in Sources */,
 				4B9BAF88231E0DE900933915 /* YBImage.m in Sources */,
+				4B09F1DA237272A900D4DA87 /* UICollectionViewLeftAlignedLayout.m in Sources */,
+				4BA8F0C32385346600116017 /* CYPasswordView.m in Sources */,
 				4BEAAC6E234ECDA50057B105 /* HJCourseCatalogueViewController.m in Sources */,
 				4BE8F0BF2357126200DD4E08 /* HJMineMessageViewController.m in Sources */,
 				4BFAFA8523176DC500688C68 /* HJMainTabBarViewController.m in Sources */,
 				4BFAFA6723176DC500688C68 /* HJTexfLineImageTableViewCell.m in Sources */,
 				4B9BAF8B231E0DE900933915 /* YBIBImageCache.m in Sources */,
+				4BA8F0C42385346600116017 /* CYPasswordInputView.m in Sources */,
 				4BFAFAD52317CF6000688C68 /* HJMoreClassTableViewCell.m in Sources */,
 				4B9BAF90231E0DE900933915 /* YBIBAuxiliaryViewHandler.m in Sources */,
 				4BFAFA6F23176DC500688C68 /* NSString+RegexCategory.m in Sources */,
@@ -1474,12 +1664,14 @@
 				4B137206235DA356009E7A80 /* HJDeanHeader.m in Sources */,
 				4BFAFAA92317B69000688C68 /* HomPageViewController.m in Sources */,
 				4BC068F8235993CD00CC3CBD /* HJPersonalSettingsViewController.m in Sources */,
+				4B09F1D42372661400D4DA87 /* CourseModel.m in Sources */,
 				4B9BAF87231E0DE900933915 /* YBIBImageLayout.m in Sources */,
 				4B9BAF92231E0DE900933915 /* YBIBSentinel.m in Sources */,
 				4B9BAF9C231E0DE900933915 /* YBIBCollectionView.m in Sources */,
 				4BFAFA8123176DC500688C68 /* HJBaseTableview.m in Sources */,
 				4BE8F0D12357209800DD4E08 /* HJProOrderModel.m in Sources */,
 				4B5CB313232103A500F18C33 /* HJShopCollectionViewCell.m in Sources */,
+				4BA8F0A82383D90700116017 /* HJPayTypeViewController.m in Sources */,
 				4B9BAF91231E0DE900933915 /* YBIBIconManager.m in Sources */,
 				4B137203235D99D1009E7A80 /* HJDeanViewController.m in Sources */,
 				4BFAFA6A23176DC500688C68 /* UILabel+InitMethod.m in Sources */,
@@ -1493,19 +1685,27 @@
 				4B9BAF9E231E0DE900933915 /* YBIBAnimatedTransition.m in Sources */,
 				4BC068E72357F1D800CC3CBD /* HJProOrderHeader.m in Sources */,
 				4BFAF8D223175C3700688C68 /* AppDelegate.m in Sources */,
+				4BB4440B237D54190077F647 /* HJAddressViewController.m in Sources */,
 				4B137209235DB854009E7A80 /* HJDeanTableViewCell.m in Sources */,
+				4BA8F0C22385346600116017 /* CYConst.m in Sources */,
 				4B9BAF95231E0DE900933915 /* YBIBPhotoAlbumManager.m in Sources */,
 				4BFAFAD02317CCFF00688C68 /* UIView+ForLMJVerticalScrollText.m in Sources */,
 				4BFAFA6923176DC500688C68 /* UIButton+CountDown.m in Sources */,
+				4BE17563237BAF4000037D3E /* ShopModel.m in Sources */,
 				4BFAFA7023176DC500688C68 /* AppDelegate+ConfigAppDelegate.m in Sources */,
+				4BE17560237AB61500037D3E /* HJCoffeBeanDetailViewController.m in Sources */,
+				4BD76BF123CDBB3B0001EF15 /* HJGetPriceDetailTableViewCell.m in Sources */,
 				4B9BAF97231E0DE900933915 /* YBIBToolViewHandler.m in Sources */,
 				4B2C7653231FE8A400D03145 /* HJCourseTopView.m in Sources */,
+				4BE17557237A461F00037D3E /* HJRecommendAlertView.m in Sources */,
 				4B762480235AA65800B30E93 /* BreakdownTableViewCell.m in Sources */,
 				4BFAFA7B23176DC500688C68 /* WRCustomNavigationBar.m in Sources */,
+				4B9852FF23C9BC8C0065F777 /* HJUploadQRCodeViewController.m in Sources */,
 				4BFAFADB2318B34200688C68 /* PersonalCenterMoreBtnTableViewCell.m in Sources */,
 				4BFAFA9423177C9E00688C68 /* HJLoginPhoneViewController.m in Sources */,
 				4BB49B12233F63DD0077696E /* WelfareInviteFrend.m in Sources */,
 				4B2C7659231FF00200D03145 /* HJShopViewController.m in Sources */,
+				4BB44408237D424F0077F647 /* HJShopSubmitOrderViewController.m in Sources */,
 				4B9BAF99231E0DE900933915 /* YBIBScreenRotationHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1528,6 +1728,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1587,6 +1788,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1644,6 +1846,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2W38PQCRD6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/selfCateringCafe/Classes/HJFrameWork/HJOther/HJPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/DZNEmptyDataSet\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/RFCircleCollectionViewFlowLayout\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/WMPageController\"",
+					"\"${PODS_ROOT}/Headers/Public/YYKit\"",
+				);
 				INFOPLIST_FILE = selfCateringCafe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1668,6 +1885,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2W38PQCRD6;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/selfCateringCafe/Classes/HJFrameWork/HJOther/HJPrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/DZNEmptyDataSet\"",
+					"\"${PODS_ROOT}/Headers/Public/IQKeyboardManager\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/MJRefresh\"",
+					"\"${PODS_ROOT}/Headers/Public/Masonry\"",
+					"\"${PODS_ROOT}/Headers/Public/RFCircleCollectionViewFlowLayout\"",
+					"\"${PODS_ROOT}/Headers/Public/SDCycleScrollView\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/WMPageController\"",
+					"\"${PODS_ROOT}/Headers/Public/YYKit\"",
+				);
 				INFOPLIST_FILE = selfCateringCafe/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (

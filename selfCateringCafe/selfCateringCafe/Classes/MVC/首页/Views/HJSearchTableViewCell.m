@@ -8,6 +8,22 @@
 
 #import "HJSearchTableViewCell.h"
 
+@interface HJSearchTableViewCell()
+
+/** 图片  */
+@property (nonatomic,weak) UIImageView *goodsImageView;
+
+/** nameLabel */
+@property (nonatomic,weak) UILabel *nameLabel;
+
+/** 价格 */
+@property (nonatomic,weak) UILabel *priceLabel;
+
+/** 数量 */
+@property (nonatomic,weak) UILabel *numLabel;
+
+@end
+
 @implementation HJSearchTableViewCell
 
 
@@ -31,37 +47,51 @@
         make.width.offset(120);
         make.height.offset(90);
     }];
+    self.goodsImageView = goodsImageView;
     
     
     UILabel *nameLabel = [UILabel labelWithFontSize:15 textColor:[UIColor blackColor]];
-    nameLabel.text = @"淘宝新规下如何快速形成店铺爆 款，免费流量飙升";
     [self.contentView addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(goodsImageView.mas_right).offset(15);
         make.top.equalTo(goodsImageView.mas_top);
         make.right.offset(-15);
     }];
+    self.nameLabel = nameLabel;
     
     
     UILabel *priceLabel = [UILabel labelWithFontSize:15 textColor:[UIColor colorWithHexString:@"#fd3528"]];
-    priceLabel.text = @"￥398.00";
     [self.contentView addSubview:priceLabel];
     [priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(goodsImageView.mas_bottom).offset(0);
         make.left.equalTo(nameLabel.mas_left);
     }];
-    
+    self.priceLabel = priceLabel;
     
     
     UILabel *numlabel = [UILabel labelWithFontSize:12 textColor:[UIColor colorWithHexString:@"#9d9c9c"]];
-    numlabel.text = @"103人已购买";
     [self.contentView addSubview:numlabel];
     [numlabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-15);
         make.centerY.equalTo(priceLabel.mas_centerY);
     }];
     
+    self.numLabel = numlabel;
     
+}
+
+
+-(void)setModel:(CourseModel *)model
+{
+    _model = model;
+    
+    [self.goodsImageView setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",ApiImagefix,model.pic]] placeholder:kGetImage(squarePlaceholder)];
+    
+    self.nameLabel.text = model.topic;
+    
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",model.price];
+    
+    self.numLabel.text=  [NSString stringWithFormat:@"%@人已购买",model.sellcount];
     
 }
 

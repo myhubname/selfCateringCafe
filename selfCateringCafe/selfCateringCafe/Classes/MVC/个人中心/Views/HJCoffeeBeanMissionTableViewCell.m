@@ -71,6 +71,7 @@
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.titleLabel.font = [UIFont systemFontOfSize:16];
     [btn setTitleColor:[UIColor colorWithHexString:@"#F17D86"] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
     [btn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.offset(-15);
@@ -105,14 +106,49 @@
     {
         [self.btn setTitle:@"去完成" forState:UIControlStateNormal];
 
-    }else
+    }else if ([dic[@"type"] integerValue] == 3)
     {
         [self.btn setTitle:@"去分享" forState:UIControlStateNormal];
+
+    }
+    else
+    {
+        [self.btn setTitle:@"去查看" forState:UIControlStateNormal];
     }
     
     
 }
 
+
+-(void)setDataSource:(NSDictionary *)dataSource
+{
+    _dataSource = dataSource;
+    
+    if ([self.dic[@"type"] integerValue] == 1) {
+        
+        if ([dataSource[@"issign"] integerValue] == 1) {
+            
+            [self.btn setTitle:@"已签" forState:UIControlStateNormal];
+
+        }else
+        {
+            [self.btn setTitle:@"签到" forState:UIControlStateNormal];
+
+        }
+        
+    }
+    
+    
+}
+
+-(void)btnClick
+{
+    
+    if (self.block) {
+        
+        self.block(self.dic);
+    }
+}
 
 
 

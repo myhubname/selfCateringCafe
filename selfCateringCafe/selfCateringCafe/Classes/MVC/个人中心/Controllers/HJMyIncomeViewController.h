@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface HJMyIncomeViewController : HJBaseViewController
 
+/** paycode */
+@property (nonatomic,copy) NSString *paycode;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

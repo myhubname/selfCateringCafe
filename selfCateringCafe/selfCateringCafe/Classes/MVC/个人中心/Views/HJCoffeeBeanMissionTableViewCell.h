@@ -15,6 +15,13 @@ NS_ASSUME_NONNULL_BEGIN
 /** 字典 */
 @property (nonatomic,copy) NSDictionary *dic;
 
+/** dataSource */
+@property (nonatomic,copy) NSDictionary *dataSource;
+
+
+/** block */
+@property (nonatomic,copy) void(^block)(NSDictionary *dic);
+
 
 @end
 

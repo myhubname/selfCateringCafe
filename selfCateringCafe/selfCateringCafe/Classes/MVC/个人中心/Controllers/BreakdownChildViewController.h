@@ -12,11 +12,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BreakdownChildViewController : UIViewController
 
+/** type */
+@property (nonatomic,copy) NSString *type;
+
+
 @end
 
 @interface BreakDownCollectionViewCell : UICollectionViewCell
 
-
+/** label */
+@property (nonatomic,weak) UILabel *label;
 
 @end
 

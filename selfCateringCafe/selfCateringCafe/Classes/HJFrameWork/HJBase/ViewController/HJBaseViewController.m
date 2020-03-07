@@ -13,6 +13,13 @@
 
 @implementation HJBaseViewController
 
+- (id)init{
+    self = [super init];
+    if (self) {
+        self.enablePanGesture = YES;
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     

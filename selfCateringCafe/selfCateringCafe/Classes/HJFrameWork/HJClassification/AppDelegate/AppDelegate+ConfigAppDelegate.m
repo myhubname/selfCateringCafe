@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate+ConfigAppDelegate.h"
-
+#import "HJCourseViewController.h"
 @implementation AppDelegate (ConfigAppDelegate)
 
 #pragma mark-设置导航栏
@@ -42,7 +42,6 @@
     IQKeyboardManager *keyboardManager = [IQKeyboardManager sharedManager]; // 获取类库的单例变量
     keyboardManager.enable = YES; // 控制整个功能是否启用
     keyboardManager.shouldResignOnTouchOutside = YES; // 控制点击背景是否收起键盘
-
 }
 
 

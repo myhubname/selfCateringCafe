@@ -15,7 +15,7 @@
 #import "HJShopViewController.h"
 #import "HJSeverViewController.h"
 #import "HJCourseDetailViewController.h"
-@interface HomPageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface HomPageViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 /** 列表 */
 @property (nonatomic,strong) HJBaseTableview *tableView;
@@ -127,13 +127,14 @@
 #pragma mark-设置导航栏
 -(void)setNav
 {
-    
     UITextField *searchTexf = [[UITextField alloc] init];
     [searchTexf setBackgroundColor:[UIColor colorWithHexString:@"#ffb0b1"]];
     searchTexf.placeholder = @"输入关键字";
-    [searchTexf setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    NSMutableAttributedString *placeholderString = [[NSMutableAttributedString alloc] initWithString:searchTexf.placeholder attributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    searchTexf.attributedPlaceholder = placeholderString;
     searchTexf.font = [UIFont systemFontOfSize:15];
     searchTexf.textColor = [UIColor whiteColor];
+    searchTexf.delegate = self;
     [self.customNavBar addSubview:searchTexf];
     [searchTexf mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.offset(30);
@@ -143,14 +144,15 @@
     }];
     searchTexf.layer.cornerRadius = 5.0f;
     searchTexf.layer.masksToBounds = YES;
-    
+
+    UIView *leftView = [[UIView alloc] init];
+    leftView.size = CGSizeMake(50, 30);
     UIButton *searchBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [searchBtn setImage:kGetImage(@"searchIcon") forState:UIControlStateNormal];
-    searchBtn.size = CGSizeMake(30, 30);
-    searchTexf.leftView = searchBtn;
+    searchBtn.size = CGSizeMake(50, 30);
+    [leftView addSubview:searchBtn];
+    searchTexf.leftView = leftView;
     searchTexf.leftViewMode = UITextFieldViewModeAlways;
-    
-    
 }
 
 #pragma mark-创建列表
@@ -202,15 +204,17 @@
           
             if ([dic[@"name"] isEqualToString:@"本地服务"]) {
                 
-                HJSeverViewController *severVc = [[HJSeverViewController alloc] init];
-                
-                [weakself.navigationController pushViewController:severVc animated:YES];
+                [HUDManager showTextHud:@"敬请期待~"];
+//                HJSeverViewController *severVc = [[HJSeverViewController alloc] init];
+//
+//                [weakself.navigationController pushViewController:severVc animated:YES];
                 
             }else if ([dic[@"name"] isEqualToString:@"商学院"])
             {
                 HJCourseViewController *courseVc = [[HJCourseViewController alloc] init];
                 
                 [weakself.navigationController pushViewController:courseVc animated:YES];
+                
             }else if ([dic[@"name"] isEqualToString:@"线上商城"])
             {
                 HJShopViewController *shopVc = [[HJShopViewController alloc] init];
@@ -333,7 +337,17 @@
     {
         [self.customNavBar wr_setBackgroundAlpha:0];
     }
-    
 }
+
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    HJCourseViewController *courseVc = [[HJCourseViewController alloc] init];
+    
+    [self.navigationController pushViewController:courseVc animated:YES];
+    
+    return NO;
+}
+
 
 @end

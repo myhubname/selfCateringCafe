@@ -19,6 +19,12 @@
 /** 收益 */
 @property (nonatomic,weak) UILabel *moneyLabel;
 
+/** 团队数量 */
+@property (nonatomic,weak) UILabel *teamNumLabel;
+
+/** subordinateNumLabel */
+@property (nonatomic,weak) UILabel *subordinateNumLabel;
+
 @end
 
 @implementation PersonalHeader
@@ -66,7 +72,7 @@
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"咖啡豆商城>" forState:UIControlStateNormal];
+    [btn setTitle:@"积分任务>" forState:UIControlStateNormal];
     btn.titleLabel.font = [UIFont systemFontOfSize:13];
     [btn setTitleColor:[UIColor colorWithHexString:@"#ff5b56"] forState:UIControlStateNormal];
     [btn setBackgroundColor:[UIColor whiteColor]];
@@ -92,13 +98,13 @@
     }];
     
     UILabel *teamNum = [UILabel labelWithFontSize:15 textColor:[UIColor whiteColor]];
-    teamNum.text = @"0";
     teamNum.font = [UIFont boldSystemFontOfSize:16];
     [oneView addSubview:teamNum];
     [teamNum mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.offset(0);
         make.top.offset(0);
     }];
+    self.teamNumLabel = teamNum;
     
     UILabel *teamAlertLabel = [UILabel labelWithFontSize:14 textColor:[UIColor whiteColor]];
     teamAlertLabel.text = @"直属团队";
@@ -138,6 +144,7 @@
         make.centerX.offset(0);
         make.top.offset(0);
     }];
+    self.subordinateNumLabel = subordinateNumLabel;
     
     UILabel *subAlertLabel = [UILabel labelWithFontSize:14 textColor:[UIColor whiteColor]];
     subAlertLabel.text = @"直属团队下级";
@@ -211,7 +218,7 @@
     }];
     
     UILabel *vipLabel = [UILabel labelWithFontSize:16 textColor:[UIColor blackColor]];
-    vipLabel.text = @"高级会员";
+    vipLabel.text = @"联合创史人";
     [vipView addSubview:vipLabel];
     [vipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(vipImageView.mas_right).offset(0);
@@ -222,7 +229,7 @@
     HJLayoutBtn *rightBtn = [HJLayoutBtn buttonWithType:UIButtonTypeCustom];
     [rightBtn setImage:kGetImage(@"rightArrowIcon") forState:UIControlStateNormal];
     rightBtn.HJ_Style = HJLaoutBtnStyleImageRight;
-    [rightBtn setTitle:@"升级院长" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"联创招募" forState:UIControlStateNormal];
     [rightBtn setTitleColor:[UIColor colorWithHexString:@"#999999"] forState:UIControlStateNormal];
     rightBtn.titleLabel.font = [UIFont systemFontOfSize:14];
     rightBtn.userInteractionEnabled = NO;
@@ -255,6 +262,9 @@
     
     self.moneyLabel.text = [NSString stringWithFormat:@"%@",dic[@"brokerageamount"]];
     
+    [self.teamNumLabel setText:[NSString stringWithFormat:@"%@",dic[@"under_count"]]];
+    
+    self.subordinateNumLabel.text = [NSString stringWithFormat:@"%@",dic[@"all_count"]];
     
 }
 
